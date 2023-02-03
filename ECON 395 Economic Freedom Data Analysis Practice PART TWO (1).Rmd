@@ -118,7 +118,7 @@ rank = b0 + b1 * gov_size + b2 * property_rights + b3 * sound_money + b4 * trade
 ## FIXED EFFECTS ESTIMATOR
 
 ```{r}
-fixed_eff_est <- lm(formula = rank ~ gov_size + country - 1, data = econ_free_clean)
+fixed_eff_est <- lm(formula = rank ~ gov_size + property_rights + sound_money + trade + regulation + country , data = econ_free_clean)
 summary(fixed_eff_est)
 ```
 
@@ -127,7 +127,8 @@ summary(fixed_eff_est)
 ## MULTIVARIATE REGRESSION WITH INTERACTION TERM
 
 ```{r}
-
+int_term <- lm(formula = rank ~ gov_size + property_rights + sound_money + trade + regulation + country  + trade * regulation , data = econ_free_clean)
+summary(int_term)
 ```
 
 
@@ -135,7 +136,11 @@ summary(fixed_eff_est)
 ## MULTICOLLINEARITY ANALYSIS
 
 ```{r}
+multi_1 <- lm(formula = rank ~ gov_size + property_rights + trade + regulation + country , data = econ_free_clean)
+summary(multi_1)
 
+multi_2 <- lm(formula = rank ~ gov_size + property_rights + sound_money + regulation + country , data = econ_free_clean)
+summary(multi_2)
 ```
 
 
@@ -143,7 +148,8 @@ summary(fixed_eff_est)
 ## LOG-LINEAR MODEL
 
 ```{r}
-
+log_lin <- lm(formula = log(rank) ~ gov_size + property_rights + sound_money + trade + regulation + country , data = econ_free_clean)
+summary(log_lin) 
 ```
 
 
@@ -151,7 +157,8 @@ summary(fixed_eff_est)
 ### LOG-LOG MODEL
 
 ```{r}
-
+log_lin <- lm(formula = log(rank) ~ log(gov_size) + log(property_rights) + log(sound_money) + log(trade) + log(regulation) + country , data = econ_free_clean, na.action = na.omit)
+summary(log_lin) 
 ```
 
 
