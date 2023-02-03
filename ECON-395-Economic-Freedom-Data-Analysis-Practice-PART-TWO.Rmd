@@ -1,0 +1,136 @@
+---
+output:
+  pdf_document:
+    citation_package: natbib
+    keep_tex: no
+    latex_engine: pdflatex
+fontfamily: mathpazo
+fontsize: 11pt
+geometry: margin=1in
+header-includes: \linespread{1.15}
+memorandum: yes
+graphics: yes
+width: 0.3
+---
+
+```{r, include = FALSE, message = FALSE}
+library(tidyverse)
+library(dplyr)
+library(psych)
+library(ggrepel)
+library(ggcorrplot)
+library(reshape2)
+library(knitr)
+library(rempsyc)
+library(kableExtra)
+library(GGally)
+library(formattable)
+```
+
+```{r, include = FALSE}
+econ_free <- read_csv("EconomicFreedomCountries.csv", show_col_types = FALSE)
+```
+
+```{r, include = FALSE}
+glimpse(econ_free)
+```
+
+```{r, include = FALSE}
+econ_free_clean <- rename(econ_free, iso_code = ISO_code,
+                  country = countries,
+                  econ_freedom_score = 'ECONOMIC FREEDOM',
+                  gov_consumption = `1a_government_consumption`,
+                  transfers = `1b_transfers`,
+                  gov_enterprises = `1c_gov_enterprises`,
+                  top_marg_tax_rate = `1d_top_marg_tax_rate`,
+                  gov_size = `1_size_government`,
+                  judicial_indep = `2a_judicial_independence`,
+                  impartial_courts = `2b_impartial_courts`,
+                  protec_prop_rights = `2c_protection_property_rights`,
+                  military_interf = `2d_military_interference`,
+                  integrity_legal_syst = `2e_integrity_legal_system`, 
+                  legal_enforc_contracts = `2f_legal_enforcement_contracts`,
+                  restr_sale_real_prop = `2g_restrictions_sale_real_property`,
+                  police_reliability = `2h_reliability_police`,
+                  busin_costs_crime = `2i_business_costs_crime`,
+                  gender_adjust = `2j_gender_adjustment`,
+                  property_rights = `2_property_rights`,
+                  money_growth = `3a_money_growth`,
+                  std_inflation = `3b_std_inflation`,
+                  inflation = `3c_inflation`,
+                  foreign_currency = `3d_freedom_own_foreign_currency`,
+                  sound_money = `3_sound_money`,
+                  tariffs = `4a_tariffs`,
+                  regu_trade_barriers = `4b_regulatory_trade_barriers`,
+                  black_market = `4c_black_market`,
+                  control_movement = `4d_control_movement_capital_ppl`,
+                  trade = `4_trade`,
+                  credit_market_reg = `5a_credit_market_reg`,
+                  labor_market_reg = `5b_labor_market_reg`,
+                  business_reg = `5c_business_reg`,
+                  regulation = `5_regulation`)
+```
+
+```{r, include = FALSE}
+econ_free_vars_q1 <- econ_free_clean %>%
+  select(rank, gov_size, property_rights, sound_money, trade, regulation)
+
+econ_free_vars_q2 <- econ_free_clean %>%
+  select(top_marg_tax_rate, inflation, money_growth, std_inflation, regu_trade_barriers, business_reg)
+```
+
+\begin{center}\textbf{MEMORANDUM}\end{center}
+
+\textbf{FROM}: Patrick Cavanaugh and Eric Elizes  
+\textbf{TO}: Mx. Gourinchas, Chief Economist of the IMF  
+\textbf{SUBJECT}: Results of Economic Freedom analysis  
+\textbf{DATE}: January 28, 2023
+
+\par\noindent\rule{\textwidth}{0.4pt}
+
+## SUMMARY 
+
+
+
+## SIMPLE REGRESSION
+
+```{r}
+
+```
+
+
+
+## MULTIVARIATE REGRESSION
+
+```{r}
+
+```
+
+
+
+## FIXED EFFECTS ESTIMATOR
+
+```{r}
+
+```
+
+
+
+## MULTIVARIATE REGRESSION WITH INTERACTION TERM
+
+```{r}
+
+```
+
+
+
+## MULTICOLLINEARITY ANALYSIS
+
+
+
+## LOG-LINEAR MODEL
+
+
+### LOG-LOG MODEL
+
+
