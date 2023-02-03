@@ -25,6 +25,7 @@ library(rempsyc)
 library(kableExtra)
 library(GGally)
 library(formattable)
+library(stargazer)
 ```
 
 ```{r, include = FALSE}
@@ -92,26 +93,33 @@ econ_free_vars_q2 <- econ_free_clean %>%
 
 
 
-## SIMPLE REGRESSION
-
 ```{r}
 
 ```
 
+## SIMPLE REGRESSION
 
+```{r}
+simple_reg <- lm(formula = rank ~ gov_size, data = econ_free_clean)
+summary(simple_reg)
+```
+
+rank = b0 + b1 * gov_size
 
 ## MULTIVARIATE REGRESSION
 
 ```{r}
-
+multivar_reg <- lm(formula = rank ~ gov_size + property_rights + sound_money + trade + regulation, data = econ_free_clean)
+summary(multivar_reg)
 ```
 
-
+rank = b0 + b1 * gov_size + b2 * property_rights + b3 * sound_money + b4 * trade + b5 * regulation
 
 ## FIXED EFFECTS ESTIMATOR
 
 ```{r}
-
+fixed_eff_est <- lm(formula = rank ~ gov_size + country - 1, data = econ_free_clean)
+summary(fixed_eff_est)
 ```
 
 
@@ -126,11 +134,24 @@ econ_free_vars_q2 <- econ_free_clean %>%
 
 ## MULTICOLLINEARITY ANALYSIS
 
+```{r}
+
+```
+
 
 
 ## LOG-LINEAR MODEL
 
+```{r}
+
+```
+
+
 
 ### LOG-LOG MODEL
+
+```{r}
+
+```
 
 
