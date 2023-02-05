@@ -4,6 +4,8 @@ output:
     citation_package: natbib
     keep_tex: no
     latex_engine: pdflatex
+  html_document:
+    df_print: paged
 fontfamily: mathpazo
 fontsize: 11pt
 geometry: margin=1in
@@ -93,18 +95,18 @@ econ_free_vars_q2 <- econ_free_clean %>%
 
 
 
-```{r}
-
-```
-
 ## SIMPLE REGRESSION
 
-```{r}
+```{r, include = FALSE}
 simple_reg <- lm(formula = rank ~ gov_size, data = econ_free_clean)
 summary(simple_reg)
 ```
 
-rank = b0 + b1 * gov_size
+When looking at what impacts the rank of countries, a variable of interest would be government size. As the size of the government increases, its is predicted that the rank would fall, indicating a lower economic freedom score. This is because as the size of government increases, by way of state ownership of assets and top marginal tax rate, economic freedom is limited. The simple regression that was run is as follows: 
+
+$$ \hat{rank} = b_0 + b_1 * government \ size $$
+
+From the results of the regression, a 1 unit increase in government size is associated with a -1.97 decrease in rank on average. The results of the simple regression agree with the prediction that as government size increases, rank decreases. This result was found to be statistically significant at the 0.001 significance level. This result is also economically significant as the size  of government can greatly affect the rank of countries.
 
 ## MULTIVARIATE REGRESSION
 
@@ -122,16 +124,12 @@ fixed_eff_est <- lm(formula = rank ~ gov_size + property_rights + sound_money + 
 summary(fixed_eff_est)
 ```
 
-
-
 ## MULTIVARIATE REGRESSION WITH INTERACTION TERM
 
 ```{r}
 int_term <- lm(formula = rank ~ gov_size + property_rights + sound_money + trade + regulation + country  + trade * regulation , data = econ_free_clean)
 summary(int_term)
 ```
-
-
 
 ## MULTICOLLINEARITY ANALYSIS
 
@@ -143,8 +141,6 @@ multi_2 <- lm(formula = rank ~ gov_size + property_rights + sound_money + regula
 summary(multi_2)
 ```
 
-
-
 ## LOG-LINEAR MODEL
 
 ```{r}
@@ -152,13 +148,25 @@ log_lin <- lm(formula = log(rank) ~ gov_size + property_rights + sound_money + t
 summary(log_lin) 
 ```
 
-
-
 ### LOG-LOG MODEL
 
 ```{r}
-log_lin <- lm(formula = log(rank) ~ log(gov_size) + log(property_rights) + log(sound_money) + log(trade) + log(regulation) + country , data = econ_free_clean, na.action = na.omit)
+econ_free_clean2 <- econ_free_clean
+econ_free_clean2["sound_money"][econ_free_clean2["sound_money"] == 0.000000] <- NA
+econ_free_clean2["trade"][econ_free_clean2["trade"] == 0.000000] <- NA
+```
+
+```{r}
+log_log <- lm(formula = log(rank) ~ log(gov_size) + log(property_rights) + log(sound_money) + log(trade) + log(regulation) + country, data = econ_free_clean2, na.action = na.omit)
 summary(log_lin) 
 ```
 
-
+```{r mylatextable, results = "asis", warning = FALSE}
+stargazer(simple_reg, multivar_reg, fixed_eff_est, int_term, multi_1, multi_2, log_lin, log_log, 
+          omit = 'country', 
+          type = 'text',
+          title = "What contributes to the rank of a country?",
+          align = TRUE,
+          column.labels = c("Simple Regression", "Multivariate Regression", " Fixed Effects Estimator", "Multivariate Regression with Interaction Term", "Multicollinearity Analysis 1", "Multicollinearity Analysis 2", "Log-Linear Model", "Log-Log Model"),
+          omit.stat = c("ser", "adj.rsq", "f"))
+```
