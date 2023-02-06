@@ -93,6 +93,8 @@ econ_free_vars_q2 <- econ_free_clean %>%
 
 ## SUMMARY 
 
+The application of many regression methods found that (1) government size has a large negative impact on rank, but not as large as property rights and sound money, and (2) trade and regulation have large positive impacts on rank. These findings are best illustrated by the multivariate regression with interactions and the log-log model.
+
 Summarize basic findings. The regression model that is most appropriate for 
 
 These results are summarized in the following table:
