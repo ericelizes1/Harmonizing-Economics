@@ -93,7 +93,7 @@ econ_free_vars_q2 <- econ_free_clean %>%
 
 ## SUMMARY 
 
-
+Summarize basic findings. The regression model that is most appropriate for 
 
 ## SIMPLE REGRESSION
 
@@ -106,7 +106,7 @@ When looking at what impacts the rank of countries, a variable of interest would
 
 $$ \hat{rank} = b_0 + b_1 * government \ size $$
 
-From the results of the regression, a 1 unit increase in government size is associated with a -1.97 decrease in rank on average. The results of the simple regression agree with the prediction that as government size increases, rank decreases. This result was found to be statistically significant at the 0.001 significance level. This result is also economically significant as the size  of government can greatly affect the rank of countries.
+From the results of the regression, a 1 unit increase in government size is associated with a 1.97 decrease in rank on average. The results of the simple regression agree with the prediction that as government size increases, rank decreases. This result was found to be statistically significant at the 0.001 significance level. This result is also economically significant as the size  of government can greatly affect the rank of countries.
 
 ## MULTIVARIATE REGRESSION
 
@@ -115,7 +115,11 @@ multivar_reg <- lm(formula = rank ~ gov_size + property_rights + sound_money + t
 summary(multivar_reg)
 ```
 
-rank = b0 + b1 * gov_size + b2 * property_rights + b3 * sound_money + b4 * trade + b5 * regulation
+The multivariate regression that was run is as follows:
+
+$$ \hat{rank} = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * sound \ money + b_4 * trade + b_5 * regulation $$
+
+From the results of the regression, a 1 unit increase in government size is associated with a 4.59 decrease in rank on average, holding property rights, sound money, trade, and regulation constant. The results of the multivariate regression also agree with the prediction that as government size increases, rank decreases. This result was found to be statistically significant at the 0.001 significance level. Compared to the simple regression, this regression shows that government size has an even larger affect on rank. This result is even more economically significant as the size of government can greatly affect the rank of countries. The constant in this regression represents the rank value that would be predicted if all the independent variables were simultaneously equal to zero. This is not economically significant because it is not possible.
 
 ## FIXED EFFECTS ESTIMATOR
 
@@ -124,12 +128,24 @@ fixed_eff_est <- lm(formula = rank ~ gov_size + property_rights + sound_money + 
 summary(fixed_eff_est)
 ```
 
+Being located in different countries The fixed effects estimator regression that was run is as follows:
+
+$$ \hat{rank} = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * sound \ money + b_4 * trade + b_5 * regulation + b_6 * country $$
+
+
+
 ## MULTIVARIATE REGRESSION WITH INTERACTION TERM
 
 ```{r}
 int_term <- lm(formula = rank ~ gov_size + property_rights + sound_money + trade + regulation + country  + trade * regulation , data = econ_free_clean)
 summary(int_term)
 ```
+
+The multivariate regression with an interaction term that was run is as follows:
+
+$$ \hat{rank} = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * sound \ money + b_4 * trade + b_5 * regulation + b_6 * country + b_7 * trade * regulation $$
+
+
 
 ## MULTICOLLINEARITY ANALYSIS
 
@@ -141,12 +157,30 @@ multi_2 <- lm(formula = rank ~ gov_size + property_rights + sound_money + regula
 summary(multi_2)
 ```
 
+During the correlation analysis, it was noted that trade and sound money had the highest correlation between the explanatory variables with a correlation of 0.68. To further investigate the multicollinearity, the two following regressions were run:
+
+$$ \hat{rank} = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * trade + b_4 * regulation + b_5 * country $$
+
+$$ \hat{rank} = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * sound \ money + b_4 * regulation + b_5 * country $$
+ 
+ 
+ 
+ -3.7618 
+ -3.86617
+ -2.9223
+
 ## LOG-LINEAR MODEL
 
 ```{r}
 log_lin <- lm(formula = log(rank) ~ gov_size + property_rights + sound_money + trade + regulation + country , data = econ_free_clean)
 summary(log_lin) 
 ```
+
+The log-linear regression that was run is as follows:
+
+$$ log(\hat{rank}) = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * sound \ money + b_4 * trade + b_5 * regulation + b_6 * country $$
+
+Based on the results of the regression, an in government size by one unit decreases rank by 8.67%. This was found to be statistically significant at the 0.001 significance level. This result is significantly significant, because a small change in government size contributes to a larger change on the change in rank.
 
 ### LOG-LOG MODEL
 
@@ -158,8 +192,13 @@ econ_free_clean2["trade"][econ_free_clean2["trade"] == 0.000000] <- NA
 
 ```{r}
 log_log <- lm(formula = log(rank) ~ log(gov_size) + log(property_rights) + log(sound_money) + log(trade) + log(regulation) + country, data = econ_free_clean2, na.action = na.omit)
-summary(log_lin) 
+summary(log_log) 
 ```
+
+The log-log regression that was run is as follows:
+
+$$ log(\hat{rank}) = b_0 + b_1 * log(government) \ size + b_2 * log(property \ rights) + b_3 * log(sound \ money) + b_4 * log(trade) + b_5 * log(regulation) + b_6 * country $$
+Based on the results of the regression, a 1% increase in government size decreases the rank by 47.94%. This was found to be statistically significant at the 0.001 significance level. This result is significantly significant, because a small change in government size contributes to a large change on the change in rank.
 
 ```{r mylatextable, results = "asis", warning = FALSE}
 stargazer(simple_reg, multivar_reg, fixed_eff_est, int_term, multi_1, multi_2, log_lin, log_log, 
