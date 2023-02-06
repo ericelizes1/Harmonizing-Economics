@@ -97,7 +97,7 @@ Summarize basic findings. The regression model that is most appropriate for
 
 These results are summarized in the following table:
 
-```{r mylatextable, results = "asis", warning = FALSE, echo=FALSE}
+```{r, echo=FALSE}
 simple_reg <- lm(formula = rank ~ gov_size, data = econ_free_clean)
 multivar_reg <- lm(formula = rank ~ gov_size + property_rights + sound_money + trade + regulation, data = econ_free_clean)
 fixed_eff_est <- lm(formula = rank ~ gov_size + property_rights + sound_money + trade + regulation + country , data = econ_free_clean)
@@ -111,6 +111,9 @@ econ_free_clean2["sound_money"][econ_free_clean2["sound_money"] == 0.000000] <- 
 econ_free_clean2["trade"][econ_free_clean2["trade"] == 0.000000] <- NA
 
 log_log <- lm(formula = log(rank) ~ log(gov_size) + log(property_rights) + log(sound_money) + log(trade) + log(regulation) + country, data = econ_free_clean2, na.action = na.omit)
+```
+
+```{r mylatextable, results = "asis", warning = FALSE, echo=FALSE}
 
 stargazer(simple_reg, multivar_reg, fixed_eff_est, int_term, multi_1, multi_2, log_lin, log_log, 
           omit = 'country', 
@@ -120,6 +123,8 @@ stargazer(simple_reg, multivar_reg, fixed_eff_est, int_term, multi_1, multi_2, l
           column.labels = c("Simple Regression", "Multivariate Regression", " Fixed Effects Estimator", "Multivariate Regression with Interaction Term", "Multicollinearity Analysis 1", "Multicollinearity Analysis 2", "Log-Linear Model", "Log-Log Model"),
           omit.stat = c("ser", "adj.rsq", "f"))
 ```
+
+
 
 ## SIMPLE REGRESSION
 
@@ -150,7 +155,7 @@ From the results of the regression, a 1 unit increase in government size is asso
 
 ## FIXED EFFECTS ESTIMATOR
 
-Being located in different countries The fixed effects estimator regression that was run is as follows:
+Being located in different countries, the fixed effects estimator regression that was run is as follows:
 
 $$ \hat{rank} = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * sound \ money + b_4 * trade + b_5 * regulation + b_6 * country $$
 
@@ -160,6 +165,7 @@ The results of this regression are as follows:
 summary(fixed_eff_est)
 ```
 
+From the results of this regression, it is clear that a 1 point increase in government size correlates with a 3.76 decrease in rank on average, holding property rights, sound money, trade, and regulation constant, as well as applying fixed effects with respect to each country. This is a decrease of lower magnitude than the multivariate regression, implying that government size is potentially overstated in the multivariate regression. This means that other features about the countries themselves aside from government size impact the decrease in rank. Similarly, the regression found that a 1 point increase in property rights correlates with a -4.86 decrease in rank on average. However, this is of wildly less magnitude than the multivariate regression, which found that a 1 point increase correlates with a -13.95 decrease in rank on average. This implies that government size was significantly more overstated. After adding fixed effects, another interesting finding is that trade had a positive correlation with rank, whereas in the multivariate regression it had a negative correlation. 
 
 ## MULTIVARIATE REGRESSION WITH INTERACTION TERM
 
@@ -215,7 +221,7 @@ $$ log(\hat{rank}) = b_0 + b_1 * log(government) \ size + b_2 * log(property \ r
 
 The results of this regression are as follows:
 
-```{r}
+```{r, echo=FALSE}
 summary(log_log) 
 ```
 
