@@ -209,7 +209,7 @@ The results of this regression are as follows:
 summary(log_lin) 
 ```
 
-Based on the results of the regression, an in government size by one unit decreases rank by 8.67%. This was found to be statistically significant at the 0.001 significance level. This result is statistically significant, because a small change in government size contributes to a larger change on the change in rank.
+Based on the results of the regression, an in government size by one unit decreases rank by 8.67%. This was found to be statistically significant at the 0.001 significance level. This result is statistically significant, because a small change in government size contributes to a larger change on the change in rank. This is economically significant and implies that government size has a significant, diminishing impact on economic freedom.
 
 ### LOG-LOG MODEL
 
@@ -223,5 +223,5 @@ The results of this regression are as follows:
 summary(log_log) 
 ```
 
-Based on the results of the regression, a 1% increase in government size decreases the rank by 47.94%. This was found to be statistically significant at the 0.001 significance level. This result is significantly significant, because a small change in government size contributes to a large change on the change in rank.
+Based on the results of the regression, a 1% increase in government size decreases the rank by 47.94%. This was found to be statistically significant at the 0.001 significance level. This result is significantly significant, because a small change in government size contributes to a large change on the change in rank. This is economically significant because it puts to scale the large impact government size has on economic freedom.
 
