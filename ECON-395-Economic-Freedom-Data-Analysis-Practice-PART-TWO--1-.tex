@@ -1,0 +1,1566 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[]{mathpazo}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\linespread{1.15}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\begin{center}\textbf{MEMORANDUM}\end{center}
+
+\textbf{FROM}: Patrick Cavanaugh and Eric Elizes\\
+\textbf{TO}: Mx. Gourinchas, Chief Economist of the IMF\\
+\textbf{SUBJECT}: Results of Economic Freedom analysis\\
+\textbf{DATE}: January 28, 2023
+
+\par
+
+\noindent
+
+\rule{\textwidth}{0.4pt}
+
+\hypertarget{summary}{%
+\subsection{SUMMARY}\label{summary}}
+
+The application of many regression methods found that (1) government
+size has a large negative impact on rank, but not as large as property
+rights and sound money, and (2) trade and regulation have large positive
+impacts on rank. These findings are best illustrated by the multivariate
+regression with interactions and the log-log model.
+
+Summarize basic findings. The regression model that is most appropriate
+for
+
+These results are summarized in the following table:
+
+\% Table created by stargazer v.5.2.3 by Marek Hlavac, Social Policy
+Institute. E-mail: marek.hlavac at gmail.com \% Date and time: Sun, Feb
+05, 2023 - 11:39:51 PM \% Requires LaTeX packages: dcolumn
+
+\begin{table}[!htbp] \centering 
+  \caption{What contributes to the rank of a country?} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{8}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-9} 
+\\[-1.8ex] & \multicolumn{6}{c}{rank} & \multicolumn{2}{c}{log(rank)} \\ 
+ & \multicolumn{1}{c}{Simple Regression} & \multicolumn{1}{c}{Multivariate Regression} & \multicolumn{1}{c}{ Fixed Effects Estimator} & \multicolumn{1}{c}{Multivariate Regression with Interaction Term} & \multicolumn{1}{c}{Multicollinearity Analysis 1} & \multicolumn{1}{c}{Multicollinearity Analysis 2} & \multicolumn{1}{c}{Log-Linear Model} & \multicolumn{1}{c}{Log-Log Model} \\ 
+\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)} & \multicolumn{1}{c}{(5)} & \multicolumn{1}{c}{(6)} & \multicolumn{1}{c}{(7)} & \multicolumn{1}{c}{(8)}\\ 
+\hline \\[-1.8ex] 
+ gov\_size & -1.966^{***} & -4.595^{***} & -3.762^{***} & -3.722^{***} & -3.866^{***} & -2.922^{***} & -0.091^{***} &  \\ 
+  & (0.531) & (0.358) & (0.401) & (0.398) & (0.414) & (0.390) & (0.008) &  \\ 
+  & & & & & & & & \\ 
+ property\_rights &  & -13.951^{***} & -4.861^{***} & -4.689^{***} & -4.866^{***} & -4.206^{***} & -0.099^{***} &  \\ 
+  &  & (0.371) & (0.471) & (0.469) & (0.488) & (0.464) & (0.009) &  \\ 
+  & & & & & & & & \\ 
+ sound\_money &  & -5.802^{***} & -4.068^{***} & -4.039^{***} &  & -3.410^{***} & -0.067^{***} &  \\ 
+  &  & (0.362) & (0.301) & (0.299) &  & (0.290) & (0.006) &  \\ 
+  & & & & & & & & \\ 
+ trade &  & -2.290^{***} & 2.835^{***} & 9.202^{***} & 1.226^{***} &  & 0.030^{***} &  \\ 
+  &  & (0.463) & (0.387) & (1.088) & (0.382) &  & (0.008) &  \\ 
+  & & & & & & & & \\ 
+ regulation &  & -0.041 & 2.921^{***} & 10.906^{***} & 0.273 & 3.799^{***} & 0.032^{***} &  \\ 
+  &  & (0.539) & (0.544) & (1.386) & (0.524) & (0.532) & (0.011) &  \\ 
+  & & & & & & & & \\ 
+ log(gov\_size) &  &  &  &  &  &  &  & -0.479^{***} \\ 
+  &  &  &  &  &  &  &  & (0.044) \\ 
+  & & & & & & & & \\ 
+ log(property\_rights) &  &  &  &  &  &  &  & -0.331^{***} \\ 
+  &  &  &  &  &  &  &  & (0.039) \\ 
+  & & & & & & & & \\ 
+ log(sound\_money) &  &  &  &  &  &  &  & -0.266^{***} \\ 
+  &  &  &  &  &  &  &  & (0.029) \\ 
+  & & & & & & & & \\ 
+ log(trade) &  &  &  &  &  &  &  & 0.180^{***} \\ 
+  &  &  &  &  &  &  &  & (0.032) \\ 
+  & & & & & & & & \\ 
+ log(regulation) &  &  &  &  &  &  &  & 0.111^{*} \\ 
+  &  &  &  &  &  &  &  & (0.063) \\ 
+  & & & & & & & & \\ 
+ trade:regulation &  &  &  & -1.205^{***} &  &  &  &  \\ 
+  &  &  &  & (0.193) &  &  &  &  \\ 
+  & & & & & & & & \\ 
+ Constant & 80.585^{***} & 232.395^{***} & 104.422^{***} & 61.475^{***} & 97.497^{***} & 104.304^{***} & 5.327^{***} & 5.467^{***} \\ 
+  & (3.408) & (3.174) & (5.218) & (8.601) & (5.377) & (5.146) & (0.105) & (0.135) \\ 
+  & & & & & & & & \\ 
+\hline \\[-1.8ex] 
+Observations & \multicolumn{1}{c}{2,994} & \multicolumn{1}{c}{2,891} & \multicolumn{1}{c}{2,891} & \multicolumn{1}{c}{2,891} & \multicolumn{1}{c}{2,893} & \multicolumn{1}{c}{2,908} & \multicolumn{1}{c}{2,891} & \multicolumn{1}{c}{2,873} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0.005} & \multicolumn{1}{c}{0.654} & \multicolumn{1}{c}{0.860} & \multicolumn{1}{c}{0.862} & \multicolumn{1}{c}{0.850} & \multicolumn{1}{c}{0.855} & \multicolumn{1}{c}{0.895} & \multicolumn{1}{c}{0.891} \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{8}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+\hypertarget{simple-regression}{%
+\subsection{SIMPLE REGRESSION}\label{simple-regression}}
+
+When looking at what impacts the rank of countries, a variable of
+interest would be government size. As the size of the government
+increases, its is predicted that the rank would fall, indicating a lower
+economic freedom score. This is because as the size of government
+increases, by way of state ownership of assets and top marginal tax
+rate, economic freedom is limited. The simple regression that was run is
+as follows:
+
+\[ \hat{rank} = b_0 + b_1 * government \ size \]
+
+The results of this regression are included below:
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = rank ~ gov_size, data = econ_free_clean)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -68.415 -35.060  -1.702  33.509  90.975 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  80.5847     3.4075   23.65  < 2e-16 ***
+## gov_size     -1.9658     0.5313   -3.70 0.000219 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 41.23 on 2992 degrees of freedom
+##   (732 observations deleted due to missingness)
+## Multiple R-squared:  0.004555,   Adjusted R-squared:  0.004222 
+## F-statistic: 13.69 on 1 and 2992 DF,  p-value: 0.0002194
+\end{verbatim}
+
+From the results of the regression, a 1 unit increase in government size
+is associated with a 1.97 decrease in rank on average. The results of
+the simple regression agree with the prediction that as government size
+increases, rank decreases. This result was found to be statistically
+significant at the 0.001 significance level. This result is also
+economically significant as the size of government can greatly affect
+the rank of countries.
+
+\hypertarget{multivariate-regression}{%
+\subsection{MULTIVARIATE REGRESSION}\label{multivariate-regression}}
+
+The multivariate regression that was run is as follows:
+
+\[ \hat{rank} = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * sound \ money + b_4 * trade + b_5 * regulation \]
+
+The results of this regression are included below:
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = rank ~ gov_size + property_rights + sound_money + 
+##     trade + regulation, data = econ_free_clean)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -96.90 -13.81   0.15  15.97  61.43 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)     232.3951     3.1736  73.227  < 2e-16 ***
+## gov_size         -4.5949     0.3584 -12.821  < 2e-16 ***
+## property_rights -13.9506     0.3713 -37.573  < 2e-16 ***
+## sound_money      -5.8022     0.3619 -16.033  < 2e-16 ***
+## trade            -2.2898     0.4626  -4.950 7.86e-07 ***
+## regulation       -0.0410     0.5392  -0.076    0.939    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 24.49 on 2885 degrees of freedom
+##   (835 observations deleted due to missingness)
+## Multiple R-squared:  0.6539, Adjusted R-squared:  0.6533 
+## F-statistic:  1090 on 5 and 2885 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+From the results of the regression, a 1 unit increase in government size
+is associated with a 4.59 decrease in rank on average, holding property
+rights, sound money, trade, and regulation constant. The results of the
+multivariate regression also agree with the prediction that as
+government size increases, rank decreases. This result was found to be
+statistically significant at the 0.001 significance level. Compared to
+the simple regression, this regression shows that government size has an
+even larger affect on rank. This result is even more economically
+significant as the size of government can greatly affect the rank of
+countries. The constant in this regression represents the rank value
+that would be predicted if all the independent variables were
+simultaneously equal to zero. This is not economically significant
+because it is not possible.
+
+\hypertarget{fixed-effects-estimator}{%
+\subsection{FIXED EFFECTS ESTIMATOR}\label{fixed-effects-estimator}}
+
+Being located in different countries, the fixed effects estimator
+regression that was run is as follows:
+
+\[ \hat{rank} = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * sound \ money + b_4 * trade + b_5 * regulation + b_6 * country \]
+
+The results of this regression are as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(fixed\_eff\_est)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = rank ~ gov_size + property_rights + sound_money + 
+##     trade + regulation + country, data = econ_free_clean)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -94.904  -7.823   0.586   8.796  55.741 
+## 
+## Coefficients:
+##                               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                   104.4215     5.2183  20.011  < 2e-16 ***
+## gov_size                       -3.7618     0.4009  -9.383  < 2e-16 ***
+## property_rights                -4.8614     0.4712 -10.317  < 2e-16 ***
+## sound_money                    -4.0681     0.3008 -13.523  < 2e-16 ***
+## trade                           2.8350     0.3873   7.320 3.26e-13 ***
+## regulation                      2.9211     0.5438   5.372 8.45e-08 ***
+## countryAlgeria                 62.4396     5.4465  11.464  < 2e-16 ***
+## countryAngola                  63.5687     6.1412  10.351  < 2e-16 ***
+## countryArgentina               39.0372     5.1576   7.569 5.12e-14 ***
+## countryArmenia                -26.1530     5.8496  -4.471 8.11e-06 ***
+## countryAustralia              -39.9353     5.3215  -7.504 8.30e-14 ***
+## countryAustria                -33.2695     5.5456  -5.999 2.24e-09 ***
+## countryAzerbaijan              43.1439     5.9963   7.195 8.03e-13 ***
+## countryBahamas                 -9.2300     5.4143  -1.705 0.088359 .  
+## countryBahrain                -25.3479     5.3124  -4.771 1.93e-06 ***
+## countryBangladesh              38.6594     5.2890   7.309 3.51e-13 ***
+## countryBarbados                23.5477     5.3531   4.399 1.13e-05 ***
+## countryBelarus                 53.6002    16.5127   3.246 0.001185 ** 
+## countryBelgium                -31.5739     5.4328  -5.812 6.90e-09 ***
+## countryBelize                   4.1595     5.5580   0.748 0.454291    
+## countryBenin                   38.4930     5.3845   7.149 1.12e-12 ***
+## countryBhutan                  19.0593     8.9422   2.131 0.033146 *  
+## countryBolivia                 25.9599     5.2322   4.962 7.42e-07 ***
+## countryBosnia and Herzegovina  21.2240     6.1040   3.477 0.000515 ***
+## countryBotswana                -8.0499     5.4097  -1.488 0.136851    
+## countryBrazil                  36.7030     5.1299   7.155 1.07e-12 ***
+## countryBrunei Darussalam        7.8635     7.3434   1.071 0.284341    
+## countryBulgaria                -3.1256     5.3648  -0.583 0.560196    
+## countryBurkina Faso            48.7606     6.1533   7.924 3.31e-15 ***
+## countryBurundi                 51.2110     5.3258   9.616  < 2e-16 ***
+## countryCambodia                11.6871     7.1506   1.634 0.102286    
+## countryCameroon                40.5338     5.2309   7.749 1.30e-14 ***
+## countryCanada                 -45.8403     5.3734  -8.531  < 2e-16 ***
+## countryCape Verde              38.6153     7.2376   5.335 1.03e-07 ***
+## countryCentral Afr. Rep.       58.0488     5.4130  10.724  < 2e-16 ***
+## countryChad                    58.1983     5.3961  10.785  < 2e-16 ***
+## countryChile                  -35.4731     5.1527  -6.884 7.18e-12 ***
+## countryChina                   40.8885     5.3836   7.595 4.20e-14 ***
+## countryColombia                17.8156     5.2103   3.419 0.000637 ***
+## countryCongo, Dem. R.          49.8110     5.3848   9.250  < 2e-16 ***
+## countryCongo, Rep. Of          44.9878     5.4179   8.304  < 2e-16 ***
+## countryCosta Rica             -20.3413     5.1804  -3.927 8.83e-05 ***
+## countryCote d'Ivoire           43.5603     5.3108   8.202 3.59e-16 ***
+## countryCroatia                 14.1075     5.5288   2.552 0.010776 *  
+## countryCyprus                 -16.8628     5.2756  -3.196 0.001408 ** 
+## countryCzech Rep.             -12.1148     5.5553  -2.181 0.029287 *  
+## countryDenmark                -44.6566     5.6657  -7.882 4.62e-15 ***
+## countryDominican Rep.           4.8148     5.1909   0.928 0.353729    
+## countryEcuador                 35.1428     5.2226   6.729 2.07e-11 ***
+## countryEgypt                   44.7805     5.2265   8.568  < 2e-16 ***
+## countryEl Salvador            -13.3801     5.2343  -2.556 0.010635 *  
+## countryEstonia                -41.0582     5.5527  -7.394 1.88e-13 ***
+## countryEthiopia                68.1604     6.0729  11.224  < 2e-16 ***
+## countryFiji                     4.5292     5.5834   0.811 0.417330    
+## countryFinland                -38.6605     5.4980  -7.032 2.57e-12 ***
+## countryFrance                 -23.0305     5.3851  -4.277 1.96e-05 ***
+## countryGabon                   39.3541     5.3018   7.423 1.53e-13 ***
+## countryGambia, The              1.0366     7.1641   0.145 0.884964    
+## countryGeorgia                -36.5129     5.8024  -6.293 3.62e-10 ***
+## countryGermany                -31.8219     5.3868  -5.907 3.91e-09 ***
+## countryGhana                   23.2693     5.2153   4.462 8.46e-06 ***
+## countryGreece                   2.2247     5.1724   0.430 0.667149    
+## countryGuatemala              -14.9951     5.1934  -2.887 0.003916 ** 
+## countryGuinea                  72.6696     8.9387   8.130 6.46e-16 ***
+## countryGuinea-Bissau           51.5793     5.6673   9.101  < 2e-16 ***
+## countryGuyana                  29.2250     5.6571   5.166 2.56e-07 ***
+## countryHaiti                   18.1206     5.5198   3.283 0.001041 ** 
+## countryHonduras                -5.2229     5.2508  -0.995 0.319982    
+## countryHong Kong              -46.5810     5.2660  -8.846  < 2e-16 ***
+## countryHungary                 -8.8522     5.4187  -1.634 0.102452    
+## countryIceland                -13.6822     5.4442  -2.513 0.012022 *  
+## countryIndia                   28.4995     5.1437   5.541 3.30e-08 ***
+## countryIndonesia               15.1959     5.0887   2.986 0.002850 ** 
+## countryIran                    56.7549     5.3568  10.595  < 2e-16 ***
+## countryIraq                    76.5676    16.5358   4.630 3.82e-06 ***
+## countryIreland                -45.4945     5.3387  -8.522  < 2e-16 ***
+## countryIsrael                 -10.0087     5.2038  -1.923 0.054542 .  
+## countryItaly                  -15.7848     5.2191  -3.024 0.002514 ** 
+## countryJamaica                -12.1250     5.1870  -2.338 0.019482 *  
+## countryJapan                  -33.0576     5.2875  -6.252 4.69e-10 ***
+## countryJordan                 -20.2697     5.2439  -3.865 0.000114 ***
+## countryKazakhstan              12.0540     6.0504   1.992 0.046442 *  
+## countryKenya                   -0.8690     5.0960  -0.171 0.864605    
+## countryKorea, South           -17.4506     5.1545  -3.385 0.000721 ***
+## countryKuwait                  -5.0558     5.3373  -0.947 0.343587    
+## countryKyrgyz Republic         21.5146     5.9945   3.589 0.000338 ***
+## countryLaos                    26.4594    10.0181   2.641 0.008309 ** 
+## countryLatvia                 -29.0484     5.4646  -5.316 1.15e-07 ***
+## countryLebanon                 19.3585     7.1783   2.697 0.007044 ** 
+## countryLesotho                 46.0599     6.1395   7.502 8.45e-14 ***
+## countryLiberia                 31.3288    10.0084   3.130 0.001765 ** 
+## countryLibya                   79.4398     8.9712   8.855  < 2e-16 ***
+## countryLithuania              -24.4291     5.4457  -4.486 7.56e-06 ***
+## countryLuxembourg             -37.3743     5.5288  -6.760 1.68e-11 ***
+## countryMacedonia                3.2046     5.8639   0.547 0.584766    
+## countryMadagascar              39.4108     5.2990   7.437 1.37e-13 ***
+## countryMalawi                  39.1624     5.2635   7.440 1.34e-13 ***
+## countryMalaysia                -7.9147     5.2216  -1.516 0.129695    
+## countryMali                    37.8178     5.2288   7.233 6.13e-13 ***
+## countryMalta                  -23.2832     5.3897  -4.320 1.62e-05 ***
+## countryMauritania              54.6566     6.0788   8.991  < 2e-16 ***
+## countryMauritius              -32.7599     5.2649  -6.222 5.65e-10 ***
+## countryMexico                   9.3202     5.1238   1.819 0.069021 .  
+## countryMoldova                 24.6828     6.0212   4.099 4.27e-05 ***
+## countryMongolia                 4.1844     5.8689   0.713 0.475917    
+## countryMontenegro               0.7056     6.0783   0.116 0.907591    
+## countryMorocco                 34.4989     5.1940   6.642 3.72e-11 ***
+## countryMozambique              60.7547     5.8023  10.471  < 2e-16 ***
+## countryMyanmar                 72.9944     5.5953  13.046  < 2e-16 ***
+## countryNamibia                 15.3454     5.4894   2.795 0.005218 ** 
+## countryNepal                   39.4165     5.4846   7.187 8.53e-13 ***
+## countryNetherlands            -38.3871     5.5273  -6.945 4.72e-12 ***
+## countryNew Zealand            -46.0972     5.4324  -8.486  < 2e-16 ***
+## countryNicaragua               -6.0134     5.2607  -1.143 0.253102    
+## countryNiger                   51.6139     5.2655   9.802  < 2e-16 ***
+## countryNigeria                 34.0860     5.2405   6.504 9.25e-11 ***
+## countryNorway                 -27.8146     5.4883  -5.068 4.29e-07 ***
+## countryOman                   -16.7735     5.4927  -3.054 0.002281 ** 
+## countryPakistan                35.8045     5.1396   6.966 4.06e-12 ***
+## countryPanama                 -27.5690     5.1952  -5.307 1.21e-07 ***
+## countryPap. New Guinea         12.7051     5.3745   2.364 0.018150 *  
+## countryParaguay                15.9034     5.3279   2.985 0.002861 ** 
+## countryPeru                   -21.0748     5.1833  -4.066 4.92e-05 ***
+## countryPhilippines             -3.9412     5.1266  -0.769 0.442096    
+## countryPoland                   4.5329     5.3406   0.849 0.396092    
+## countryPortugal               -16.5322     5.2518  -3.148 0.001662 ** 
+## countryQatar                  -25.1054     7.2786  -3.449 0.000571 ***
+## countryRomania                 -7.1840     5.3253  -1.349 0.177434    
+## countryRussia                  36.3225     5.3780   6.754 1.75e-11 ***
+## countryRwanda                   6.8582     5.5364   1.239 0.215549    
+## countrySaudi Arabia            36.0613     7.2868   4.949 7.92e-07 ***
+## countrySenegal                 41.2838     5.2264   7.899 4.04e-15 ***
+## countrySerbia                  26.6891     6.0365   4.421 1.02e-05 ***
+## countrySeychelles              -7.6413     8.9005  -0.859 0.390674    
+## countrySierra Leone            51.0547     5.2827   9.665  < 2e-16 ***
+## countrySingapore              -45.0495     5.2845  -8.525  < 2e-16 ***
+## countrySlovak Rep             -19.6924     5.4783  -3.595 0.000331 ***
+## countrySlovenia                 7.8350     5.5584   1.410 0.158779    
+## countrySouth Africa            -2.8488     5.1201  -0.556 0.577994    
+## countrySpain                  -26.1591     5.1671  -5.063 4.41e-07 ***
+## countrySri Lanka               22.0268     5.2028   4.234 2.38e-05 ***
+## countrySudan                   95.5936    16.5724   5.768 8.91e-09 ***
+## countrySuriname                33.3203     7.1831   4.639 3.67e-06 ***
+## countrySwaziland               35.3138     7.2573   4.866 1.20e-06 ***
+## countrySweden                 -31.5237     5.6016  -5.628 2.01e-08 ***
+## countrySwitzerland            -39.1185     5.3304  -7.339 2.83e-13 ***
+## countrySyria                   58.0827     5.2640  11.034  < 2e-16 ***
+## countryTaiwan                 -24.6809     5.1408  -4.801 1.66e-06 ***
+## countryTajikistan              42.8981     7.1639   5.988 2.40e-09 ***
+## countryTanzania                30.8717     5.2140   5.921 3.60e-09 ***
+## countryThailand                 8.2698     5.0916   1.624 0.104446    
+## countryTimor-Leste             24.9317     7.6505   3.259 0.001132 ** 
+## countryTogo                    46.9211     5.3099   8.837  < 2e-16 ***
+## countryTrinidad & Tob.          1.5835     5.2460   0.302 0.762787    
+## countryTunisia                 20.2997     5.1364   3.952 7.94e-05 ***
+## countryTurkey                  17.2433     5.1645   3.339 0.000853 ***
+## countryUganda                  -6.3813     5.2716  -1.210 0.226193    
+## countryUkraine                 48.6945     5.5570   8.763  < 2e-16 ***
+## countryUnit. Arab Em.         -34.9874     5.3020  -6.599 4.96e-11 ***
+## countryUnited Kingdom         -47.3871     5.3911  -8.790  < 2e-16 ***
+## countryUnited States          -44.4039     5.3003  -8.378  < 2e-16 ***
+## countryUruguay                -10.9848     5.2065  -2.110 0.034966 *  
+## countryVenezuela               36.4686     5.1965   7.018 2.83e-12 ***
+## countryVietnam                 44.3031     5.7768   7.669 2.39e-14 ***
+## countryYemen, Rep.             54.3134     7.1900   7.554 5.72e-14 ***
+## countryZambia                   8.9695     5.1993   1.725 0.084615 .  
+## countryZimbabwe                50.5967     5.3133   9.523  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 16.03 on 2724 degrees of freedom
+##   (835 observations deleted due to missingness)
+## Multiple R-squared:   0.86,  Adjusted R-squared:  0.8515 
+## F-statistic: 100.8 on 166 and 2724 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+From the results of this regression, it is clear that a 1 point increase
+in government size correlates with a 3.76 decrease in rank on average,
+holding property rights, sound money, trade, and regulation constant, as
+well as applying fixed effects with respect to each country. This is a
+decrease of lower magnitude than the multivariate regression, implying
+that government size is potentially overstated in the multivariate
+regression. This means that other features about the countries
+themselves aside from government size impact the decrease in rank.
+Similarly, the regression found that a 1 point increase in property
+rights correlates with a -4.86 decrease in rank on average. However,
+this is of wildly less magnitude than the multivariate regression, which
+found that a 1 point increase correlates with a -13.95 decrease in rank
+on average. This implies that government size was significantly more
+overstated. After adding fixed effects, another interesting finding is
+that trade had a positive correlation with rank, whereas in the
+multivariate regression it had a negative correlation. These values have
+very low p-values and are statistically significant at the 0.001
+confidence interval. For the reasons above, they are also economically
+significant.
+
+\hypertarget{multivariate-regression-with-interaction-term}{%
+\subsection{MULTIVARIATE REGRESSION WITH INTERACTION
+TERM}\label{multivariate-regression-with-interaction-term}}
+
+The multivariate regression with an interaction term that was run is as
+follows:
+
+\[ \hat{rank} = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * sound \ money + b_4 * trade + b_5 * regulation + b_6 * country + b_7 * trade * regulation \]
+
+The results of this regression are as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(int\_term)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = rank ~ gov_size + property_rights + sound_money + 
+##     trade + regulation + country + trade * regulation, data = econ_free_clean)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -97.619  -7.912   0.613   8.542  53.779 
+## 
+## Coefficients:
+##                               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                    61.4750     8.6006   7.148 1.13e-12 ***
+## gov_size                       -3.7223     0.3982  -9.348  < 2e-16 ***
+## property_rights                -4.6887     0.4688 -10.002  < 2e-16 ***
+## sound_money                    -4.0391     0.2988 -13.519  < 2e-16 ***
+## trade                           9.2022     1.0879   8.458  < 2e-16 ***
+## regulation                     10.9058     1.3857   7.870 5.07e-15 ***
+## countryAlgeria                 64.0110     5.4146  11.822  < 2e-16 ***
+## countryAngola                  63.3764     6.0987  10.392  < 2e-16 ***
+## countryArgentina               39.4017     5.1222   7.692 2.00e-14 ***
+## countryArmenia                -24.3269     5.8164  -4.182 2.97e-05 ***
+## countryAustralia              -37.6356     5.2974  -7.104 1.54e-12 ***
+## countryAustria                -30.6234     5.5234  -5.544 3.23e-08 ***
+## countryAzerbaijan              42.5629     5.9555   7.147 1.14e-12 ***
+## countryBahamas                -12.5162     5.4024  -2.317 0.020590 *  
+## countryBahrain                -22.0999     5.3011  -4.169 3.16e-05 ***
+## countryBangladesh              37.5672     5.2552   7.149 1.12e-12 ***
+## countryBarbados                22.2747     5.3199   4.187 2.92e-05 ***
+## countryBelarus                 53.7168    16.3983   3.276 0.001067 ** 
+## countryBelgium                -27.8358     5.4282  -5.128 3.13e-07 ***
+## countryBelize                   3.0008     5.5226   0.543 0.586922    
+## countryBenin                   37.0573     5.3522   6.924 5.46e-12 ***
+## countryBhutan                  17.6766     8.8829   1.990 0.046697 *  
+## countryBolivia                 26.1118     5.1960   5.025 5.35e-07 ***
+## countryBosnia and Herzegovina  22.8516     6.0672   3.766 0.000169 ***
+## countryBotswana                -7.0957     5.3744  -1.320 0.186849    
+## countryBrazil                  36.4380     5.0945   7.152 1.09e-12 ***
+## countryBrunei Darussalam       10.0699     7.3010   1.379 0.167930    
+## countryBulgaria                -1.0386     5.3380  -0.195 0.845748    
+## countryBurkina Faso            47.3941     6.1146   7.751 1.28e-14 ***
+## countryBurundi                 49.6185     5.2950   9.371  < 2e-16 ***
+## countryCambodia                12.2829     7.1017   1.730 0.083820 .  
+## countryCameroon                39.0756     5.1999   7.515 7.69e-14 ***
+## countryCanada                 -40.9351     5.3934  -7.590 4.37e-14 ***
+## countryCape Verde              38.3693     7.1876   5.338 1.02e-07 ***
+## countryCentral Afr. Rep.       57.8603     5.3756  10.763  < 2e-16 ***
+## countryChad                    58.4512     5.3588  10.907  < 2e-16 ***
+## countryChile                  -32.7087     5.1360  -6.368 2.23e-10 ***
+## countryChina                   41.4942     5.3472   7.760 1.19e-14 ***
+## countryColombia                17.8701     5.1742   3.454 0.000561 ***
+## countryCongo, Dem. R.          50.6274     5.3491   9.465  < 2e-16 ***
+## countryCongo, Rep. Of          44.2679     5.3816   8.226 2.97e-16 ***
+## countryCosta Rica             -19.6013     5.1458  -3.809 0.000143 ***
+## countryCote d'Ivoire           42.5213     5.2766   8.058 1.14e-15 ***
+## countryCroatia                 15.2832     5.4937   2.782 0.005440 ** 
+## countryCyprus                 -15.7158     5.2422  -2.998 0.002743 ** 
+## countryCzech Rep.              -9.4977     5.5327  -1.717 0.086156 .  
+## countryDenmark                -39.3927     5.6890  -6.924 5.44e-12 ***
+## countryDominican Rep.           4.7388     5.1550   0.919 0.358032    
+## countryEcuador                 35.3547     5.1865   6.817 1.14e-11 ***
+## countryEgypt                   44.6761     5.1903   8.608  < 2e-16 ***
+## countryEl Salvador            -11.9592     5.2030  -2.299 0.021607 *  
+## countryEstonia                -36.1171     5.5705  -6.484 1.06e-10 ***
+## countryEthiopia                66.0946     6.0398  10.943  < 2e-16 ***
+## countryFiji                     2.7237     5.5522   0.491 0.623769    
+## countryFinland                -35.6528     5.4810  -6.505 9.22e-11 ***
+## countryFrance                 -20.5030     5.3630  -3.823 0.000135 ***
+## countryGabon                   37.7711     5.2712   7.166 9.93e-13 ***
+## countryGambia, The              2.3674     7.1176   0.333 0.739455    
+## countryGeorgia                -31.3551     5.8209  -5.387 7.79e-08 ***
+## countryGermany                -30.6754     5.3526  -5.731 1.11e-08 ***
+## countryGhana                   23.2488     5.1792   4.489 7.46e-06 ***
+## countryGreece                   2.7260     5.1372   0.531 0.595715    
+## countryGuatemala              -13.9350     5.1602  -2.700 0.006967 ** 
+## countryGuinea                  69.7510     8.8890   7.847 6.08e-15 ***
+## countryGuinea-Bissau           51.0850     5.6286   9.076  < 2e-16 ***
+## countryGuyana                  29.9303     5.6190   5.327 1.08e-07 ***
+## countryHaiti                   18.4917     5.4819   3.373 0.000753 ***
+## countryHonduras                -4.4116     5.2160  -0.846 0.397751    
+## countryHong Kong              -35.4857     5.5220  -6.426 1.54e-10 ***
+## countryHungary                 -6.0545     5.3997  -1.121 0.262280    
+## countryIceland                -13.1084     5.4073  -2.424 0.015406 *  
+## countryIndia                   26.9625     5.1140   5.272 1.45e-07 ***
+## countryIndonesia               15.6611     5.0540   3.099 0.001963 ** 
+## countryIran                    58.9576     5.3313  11.059  < 2e-16 ***
+## countryIraq                    74.4454    16.4247   4.533 6.08e-06 ***
+## countryIreland                -40.5401     5.3605  -7.563 5.36e-14 ***
+## countryIsrael                  -7.9427     5.1783  -1.534 0.125185    
+## countryItaly                  -14.3948     5.1877  -2.775 0.005562 ** 
+## countryJamaica                -11.2962     5.1528  -2.192 0.028447 *  
+## countryJapan                  -31.1614     5.2596  -5.925 3.52e-09 ***
+## countryJordan                 -18.3066     5.2170  -3.509 0.000457 ***
+## countryKazakhstan               9.0740     6.0273   1.505 0.132316    
+## countryKenya                   -1.7552     5.0626  -0.347 0.728848    
+## countryKorea, South           -16.8874     5.1196  -3.299 0.000984 ***
+## countryKuwait                  -3.3394     5.3074  -0.629 0.529273    
+## countryKyrgyz Republic         21.2530     5.9531   3.570 0.000363 ***
+## countryLaos                    25.9008     9.9491   2.603 0.009282 ** 
+## countryLatvia                 -26.0055     5.4485  -4.773 1.91e-06 ***
+## countryLebanon                 19.1228     7.1287   2.683 0.007351 ** 
+## countryLesotho                 44.5774     6.1016   7.306 3.60e-13 ***
+## countryLiberia                 29.3076     9.9443   2.947 0.003234 ** 
+## countryLibya                   79.2715     8.9091   8.898  < 2e-16 ***
+## countryLithuania              -22.2147     5.4195  -4.099 4.27e-05 ***
+## countryLuxembourg             -32.4074     5.5475  -5.842 5.78e-09 ***
+## countryMacedonia                5.4487     5.8343   0.934 0.350433    
+## countryMadagascar              39.7038     5.2625   7.545 6.14e-14 ***
+## countryMalawi                  38.0071     5.2303   7.267 4.79e-13 ***
+## countryMalaysia                -6.5662     5.1899  -1.265 0.205914    
+## countryMali                    37.5418     5.1928   7.230 6.26e-13 ***
+## countryMalta                  -21.4342     5.3605  -3.999 6.54e-05 ***
+## countryMauritania              53.5758     6.0392   8.871  < 2e-16 ***
+## countryMauritius              -30.4276     5.2417  -5.805 7.18e-09 ***
+## countryMexico                  10.0325     5.0896   1.971 0.048803 *  
+## countryMoldova                 24.9603     5.9797   4.174 3.08e-05 ***
+## countryMongolia                 3.9661     5.8283   0.680 0.496248    
+## countryMontenegro               3.3815     6.0513   0.559 0.576343    
+## countryMorocco                 34.1151     5.1584   6.613 4.50e-11 ***
+## countryMozambique              60.4304     5.7623  10.487  < 2e-16 ***
+## countryMyanmar                 77.6727     5.6066  13.854  < 2e-16 ***
+## countryNamibia                 13.6438     5.4581   2.500 0.012487 *  
+## countryNepal                   38.5716     5.4483   7.080 1.83e-12 ***
+## countryNetherlands            -34.0871     5.5319  -6.162 8.25e-10 ***
+## countryNew Zealand            -39.5882     5.4941  -7.206 7.45e-13 ***
+## countryNicaragua               -3.1612     5.2441  -0.603 0.546677    
+## countryNiger                   51.1348     5.2296   9.778  < 2e-16 ***
+## countryNigeria                 33.3542     5.2055   6.408 1.74e-10 ***
+## countryNorway                 -26.6010     5.4537  -4.878 1.14e-06 ***
+## countryOman                   -12.3585     5.5000  -2.247 0.024721 *  
+## countryPakistan                35.0013     5.1056   6.855 8.76e-12 ***
+## countryPanama                 -24.7818     5.1784  -4.786 1.80e-06 ***
+## countryPap. New Guinea         11.0972     5.3434   2.077 0.037913 *  
+## countryParaguay                15.9244     5.2909   3.010 0.002639 ** 
+## countryPeru                   -17.0635     5.1872  -3.290 0.001016 ** 
+## countryPhilippines             -4.1377     5.0912  -0.813 0.416458    
+## countryPoland                   6.4021     5.3120   1.205 0.228224    
+## countryPortugal               -15.3624     5.2187  -2.944 0.003270 ** 
+## countryQatar                  -21.7483     7.2480  -3.001 0.002719 ** 
+## countryRomania                 -4.6927     5.3033  -0.885 0.376310    
+## countryRussia                  35.2211     5.3437   6.591 5.22e-11 ***
+## countryRwanda                   6.0426     5.4996   1.099 0.271984    
+## countrySaudi Arabia            35.3262     7.2373   4.881 1.12e-06 ***
+## countrySenegal                 41.4538     5.1903   7.987 2.02e-15 ***
+## countrySerbia                  27.4555     5.9959   4.579 4.88e-06 ***
+## countrySeychelles              -4.9629     8.8491  -0.561 0.574954    
+## countrySierra Leone            51.5265     5.2466   9.821  < 2e-16 ***
+## countrySingapore              -36.8997     5.4071  -6.824 1.09e-11 ***
+## countrySlovak Rep             -16.6098     5.4626  -3.041 0.002383 ** 
+## countrySlovenia                 9.1627     5.5239   1.659 0.097285 .  
+## countrySouth Africa            -2.6857     5.0847  -0.528 0.597405    
+## countrySpain                  -24.4071     5.1389  -4.749 2.15e-06 ***
+## countrySri Lanka               20.9435     5.1696   4.051 5.24e-05 ***
+## countrySudan                   92.3310    16.4659   5.607 2.26e-08 ***
+## countrySuriname                33.2568     7.1333   4.662 3.28e-06 ***
+## countrySwaziland               35.1181     7.2071   4.873 1.16e-06 ***
+## countrySweden                 -28.3913     5.5853  -5.083 3.96e-07 ***
+## countrySwitzerland            -36.1740     5.3143  -6.807 1.22e-11 ***
+## countrySyria                   60.2081     5.2386  11.493  < 2e-16 ***
+## countryTaiwan                 -23.8353     5.1069  -4.667 3.20e-06 ***
+## countryTajikistan              41.5708     7.1174   5.841 5.81e-09 ***
+## countryTanzania                31.1328     5.1780   6.012 2.07e-09 ***
+## countryThailand                 7.7023     5.0571   1.523 0.127859    
+## countryTimor-Leste             25.9477     7.5992   3.415 0.000648 ***
+## countryTogo                    46.5841     5.2734   8.834  < 2e-16 ***
+## countryTrinidad & Tob.          2.6042     5.2122   0.500 0.617376    
+## countryTunisia                 19.9015     5.1012   3.901 9.80e-05 ***
+## countryTurkey                  17.4890     5.1288   3.410 0.000659 ***
+## countryUganda                  -4.9831     5.2399  -0.951 0.341691    
+## countryUkraine                 48.0915     5.5194   8.713  < 2e-16 ***
+## countryUnit. Arab Em.         -31.1024     5.3018  -5.866 4.99e-09 ***
+## countryUnited Kingdom         -41.3343     5.4405  -7.598 4.12e-14 ***
+## countryUnited States          -39.4566     5.3227  -7.413 1.64e-13 ***
+## countryUruguay                 -9.6954     5.1746  -1.874 0.061083 .  
+## countryVenezuela               38.8785     5.1749   7.513 7.80e-14 ***
+## countryVietnam                 42.9948     5.7406   7.490 9.28e-14 ***
+## countryYemen, Rep.             54.0792     7.1403   7.574 4.93e-14 ***
+## countryZambia                   9.5600     5.1641   1.851 0.064242 .  
+## countryZimbabwe                52.0504     5.2816   9.855  < 2e-16 ***
+## trade:regulation               -1.2053     0.1926  -6.257 4.55e-10 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 15.92 on 2723 degrees of freedom
+##   (835 observations deleted due to missingness)
+## Multiple R-squared:  0.862,  Adjusted R-squared:  0.8536 
+## F-statistic: 101.9 on 167 and 2723 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+From this regression, it is clear that a 1 point increase in the
+interaction between trade and regulation correlates with a -1.21
+decrease in rank. As a result, a 1 point increase in trade and 1 point
+increase in regulation correlates with, respectively, a 9.20 and 10.91
+increase in rank. These values have very low p-values and are
+statistically significant at the 0.001 confidence interval.
+Economically, this is significant and implies the difference in the
+effect of trade on regulation.
+
+\hypertarget{multicollinearity-analysis}{%
+\subsection{MULTICOLLINEARITY
+ANALYSIS}\label{multicollinearity-analysis}}
+
+During the correlation analysis, it was noted that trade and sound money
+had the highest correlation between the explanatory variables with a
+correlation of 0.68. To further investigate the multicollinearity, the
+two following regressions were run:
+
+\[ \hat{rank} = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * trade + b_4 * regulation + b_5 * country \]
+
+\[ \hat{rank} = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * sound \ money + b_4 * regulation + b_5 * country \]
+
+The results of this regression are as follows:
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = rank ~ gov_size + property_rights + trade + regulation + 
+##     country, data = econ_free_clean)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -95.222  -7.853   0.244   9.010  59.781 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                    97.49675    5.37687  18.133  < 2e-16 ***
+## gov_size                       -3.86617    0.41450  -9.327  < 2e-16 ***
+## property_rights                -4.86596    0.48765  -9.978  < 2e-16 ***
+## trade                           1.22579    0.38243   3.205 0.001365 ** 
+## regulation                      0.27315    0.52441   0.521 0.602498    
+## countryAlgeria                 62.28512    5.63716  11.049  < 2e-16 ***
+## countryAngola                  72.73446    6.31894  11.511  < 2e-16 ***
+## countryArgentina               45.62097    5.31490   8.584  < 2e-16 ***
+## countryArmenia                -24.39373    6.05316  -4.030 5.73e-05 ***
+## countryAustralia              -37.14045    5.50396  -6.748 1.82e-11 ***
+## countryAustria                -32.08532    5.73930  -5.590 2.49e-08 ***
+## countryAzerbaijan              51.03815    6.17783   8.261  < 2e-16 ***
+## countryBahamas                  0.92699    5.54801   0.167 0.867315    
+## countryBahrain                -20.32713    5.48559  -3.706 0.000215 ***
+## countryBangladesh              44.12293    5.45815   8.084 9.33e-16 ***
+## countryBarbados                32.41278    5.49958   5.894 4.24e-09 ***
+## countryBelarus                 67.99537   17.05630   3.987 6.88e-05 ***
+## countryBelgium                -29.75983    5.62160  -5.294 1.29e-07 ***
+## countryBelize                  13.27622    5.71007   2.325 0.020142 *  
+## countryBenin                   45.54017    5.54762   8.209 3.40e-16 ***
+## countryBhutan                  29.14118    9.22286   3.160 0.001597 ** 
+## countryBolivia                 26.30154    5.41544   4.857 1.26e-06 ***
+## countryBosnia and Herzegovina  26.32777    6.30644   4.175 3.08e-05 ***
+## countryBotswana                -3.30411    5.58793  -0.591 0.554372    
+## countryBrazil                  41.71824    5.29625   7.877 4.80e-15 ***
+## countryBrunei Darussalam       14.75754    7.58307   1.946 0.051743 .  
+## countryBulgaria                 2.41037    5.53719   0.435 0.663375    
+## countryBurkina Faso            57.44961    6.33508   9.068  < 2e-16 ***
+## countryBurundi                 53.61259    5.50951   9.731  < 2e-16 ***
+## countryCambodia                10.75253    7.40087   1.453 0.146374    
+## countryCameroon                45.61285    5.40054   8.446  < 2e-16 ***
+## countryCanada                 -40.87424    5.54892  -7.366 2.31e-13 ***
+## countryCape Verde              42.49145    7.48572   5.676 1.52e-08 ***
+## countryCentral Afr. Rep.       60.49034    5.59983  10.802  < 2e-16 ***
+## countryChad                    62.73207    5.57472  11.253  < 2e-16 ***
+## countryChile                  -30.06859    5.31755  -5.655 1.72e-08 ***
+## countryChina                   40.47740    5.57196   7.264 4.86e-13 ***
+## countryColombia                23.28092    5.37710   4.330 1.55e-05 ***
+## countryCongo, Dem. R.          57.96064    5.53941  10.463  < 2e-16 ***
+## countryCongo, Rep. Of          54.58123    5.56118   9.815  < 2e-16 ***
+## countryCosta Rica             -17.18474    5.35662  -3.208 0.001351 ** 
+## countryCote d'Ivoire           49.40925    5.47914   9.018  < 2e-16 ***
+## countryCroatia                 17.96402    5.71545   3.143 0.001690 ** 
+## countryCyprus                 -14.19990    5.45682  -2.602 0.009312 ** 
+## countryCzech Rep.              -9.24280    5.74616  -1.609 0.107838    
+## countryDenmark                -39.79341    5.85312  -6.799 1.29e-11 ***
+## countryDominican Rep.          12.54474    5.34038   2.349 0.018893 *  
+## countryEcuador                 43.58476    5.36762   8.120 6.99e-16 ***
+## countryEgypt                   39.30713    5.39288   7.289 4.08e-13 ***
+## countryEl Salvador            -12.65406    5.41748  -2.336 0.019575 *  
+## countryEstonia                -34.90262    5.72856  -6.093 1.27e-09 ***
+## countryEthiopia                79.39907    6.22668  12.751  < 2e-16 ***
+## countryFiji                    18.15196    5.68361   3.194 0.001420 ** 
+## countryFinland                -35.96085    5.68717  -6.323 2.98e-10 ***
+## countryFrance                 -20.90751    5.57165  -3.752 0.000179 ***
+## countryGabon                   50.14931    5.42600   9.242  < 2e-16 ***
+## countryGambia, The              4.21032    7.41131   0.568 0.570018    
+## countryGeorgia                -30.64878    5.98945  -5.117 3.32e-07 ***
+## countryGermany                -32.25628    5.57525  -5.786 8.05e-09 ***
+## countryGhana                   31.24779    5.36370   5.826 6.35e-09 ***
+## countryGreece                   0.91448    5.35238   0.171 0.864351    
+## countryGuatemala              -14.50103    5.37537  -2.698 0.007025 ** 
+## countryGuinea                  75.27707    9.24995   8.138 6.04e-16 ***
+## countryGuinea-Bissau           59.65304    5.83473  10.224  < 2e-16 ***
+## countryGuyana                  34.73544    5.84105   5.947 3.08e-09 ***
+## countryHaiti                   23.03189    5.70117   4.040 5.50e-05 ***
+## countryHonduras                -4.57973    5.43467  -0.843 0.399477    
+## countryHong Kong              -37.69396    5.40737  -6.971 3.94e-12 ***
+## countryHungary                 -6.58187    5.60619  -1.174 0.240483    
+## countryIceland                 -4.47853    5.59077  -0.801 0.423169    
+## countryIndia                   33.49134    5.31018   6.307 3.31e-10 ***
+## countryIndonesia               16.28409    5.26643   3.092 0.002008 ** 
+## countryIran                    57.25587    5.40933  10.585  < 2e-16 ***
+## countryIraq                    80.10303   17.11337   4.681 3.00e-06 ***
+## countryIreland                -39.76025    5.50891  -7.217 6.84e-13 ***
+## countryIsrael                  -6.79834    5.38100  -1.263 0.206555    
+## countryItaly                  -14.49962    5.40119  -2.685 0.007307 ** 
+## countryJamaica                 -5.99992    5.34838  -1.122 0.262038    
+## countryJapan                  -30.78905    5.47024  -5.628 2.00e-08 ***
+## countryJordan                 -16.88437    5.42180  -3.114 0.001864 ** 
+## countryKazakhstan              16.05326    6.25456   2.567 0.010322 *  
+## countryKenya                    2.41867    5.26868   0.459 0.646223    
+## countryKorea, South           -16.33128    5.33458  -3.061 0.002225 ** 
+## countryKuwait                   1.01705    5.50540   0.185 0.853449    
+## countryKyrgyz Republic         24.11673    6.20148   3.889 0.000103 ***
+## countryLaos                    32.54478   10.35860   3.142 0.001697 ** 
+## countryLatvia                 -24.04602    5.64357  -4.261 2.11e-05 ***
+## countryLebanon                 15.44059    7.42388   2.080 0.037632 *  
+## countryLesotho                 50.60623    6.34562   7.975 2.22e-15 ***
+## countryLiberia                 28.66137   10.35731   2.767 0.005691 ** 
+## countryLibya                   84.43192    9.27816   9.100  < 2e-16 ***
+## countryLithuania              -19.51605    5.62439  -3.470 0.000529 ***
+## countryLuxembourg             -33.95163    5.71692  -5.939 3.24e-09 ***
+## countryMacedonia               10.72609    6.04285   1.775 0.076009 .  
+## countryMadagascar              42.38486    5.48017   7.734 1.45e-14 ***
+## countryMalawi                  51.03570    5.37229   9.500  < 2e-16 ***
+## countryMalaysia                 2.67510    5.34439   0.501 0.616732    
+## countryMali                    44.13033    5.39110   8.186 4.11e-16 ***
+## countryMalta                  -19.52776    5.57155  -3.505 0.000464 ***
+## countryMauritania              60.79149    6.27491   9.688  < 2e-16 ***
+## countryMauritius              -29.91309    5.44509  -5.494 4.30e-08 ***
+## countryMexico                  14.91392    5.28638   2.821 0.004819 ** 
+## countryMoldova                 31.85821    6.20841   5.131 3.08e-07 ***
+## countryMongolia                 9.15609    6.06256   1.510 0.131091    
+## countryMontenegro               7.98945    6.26729   1.275 0.202493    
+## countryMorocco                 38.57414    5.36734   7.187 8.52e-13 ***
+## countryMozambique              64.61873    5.99880  10.772  < 2e-16 ***
+## countryMyanmar                 75.33678    5.78855  13.015  < 2e-16 ***
+## countryNamibia                 27.65780    5.60312   4.936 8.45e-07 ***
+## countryNepal                   47.75317    5.64118   8.465  < 2e-16 ***
+## countryNetherlands            -36.28435    5.71897  -6.345 2.60e-10 ***
+## countryNew Zealand            -38.94535    5.59644  -6.959 4.28e-12 ***
+## countryNicaragua                0.02065    5.42587   0.004 0.996964    
+## countryNiger                   54.22091    5.44662   9.955  < 2e-16 ***
+## countryNigeria                 42.76471    5.38377   7.943 2.85e-15 ***
+## countryNorway                 -24.81988    5.67632  -4.373 1.27e-05 ***
+## countryOman                    -8.66508    5.65237  -1.533 0.125392    
+## countryPakistan                42.03259    5.29835   7.933 3.09e-15 ***
+## countryPanama                 -25.77786    5.37563  -4.795 1.71e-06 ***
+## countryPap. New Guinea         23.55130    5.50084   4.281 1.92e-05 ***
+## countryParaguay                15.67250    5.51452   2.842 0.004516 ** 
+## countryPeru                   -15.96330    5.35108  -2.983 0.002878 ** 
+## countryPhilippines             -1.20194    5.30221  -0.227 0.820685    
+## countryPoland                   6.58742    5.52573   1.192 0.233312    
+## countryPortugal               -16.19050    5.43564  -2.979 0.002921 ** 
+## countryQatar                  -16.63396    7.50603  -2.216 0.026768 *  
+## countryRomania                 -0.69260    5.48988  -0.126 0.899615    
+## countryRussia                  42.37209    5.54741   7.638 3.03e-14 ***
+## countryRwanda                  12.34674    5.71526   2.160 0.030835 *  
+## countrySaudi Arabia            41.07885    7.53280   5.453 5.39e-08 ***
+## countrySenegal                 45.14363    5.40195   8.357  < 2e-16 ***
+## countrySerbia                  33.84367    6.22465   5.437 5.90e-08 ***
+## countrySeychelles              -3.95877    9.20831  -0.430 0.667293    
+## countrySierra Leone            56.83634    5.45016  10.428  < 2e-16 ***
+## countrySingapore              -37.38679    5.43812  -6.875 7.66e-12 ***
+## countrySlovak Rep             -16.24147    5.66449  -2.867 0.004172 ** 
+## countrySlovenia                 9.57378    5.75177   1.664 0.096129 .  
+## countrySouth Africa             3.92130    5.27472   0.743 0.457296    
+## countrySpain                  -24.14079    5.34613  -4.516 6.58e-06 ***
+## countrySri Lanka               30.81246    5.34300   5.767 8.98e-09 ***
+## countrySudan                  101.38198   17.14707   5.912 3.79e-09 ***
+## countrySuriname                35.16932    7.43358   4.731 2.35e-06 ***
+## countrySwaziland               42.04201    7.49450   5.610 2.23e-08 ***
+## countrySweden                 -28.95173    5.79486  -4.996 6.22e-07 ***
+## countrySwitzerland            -36.44482    5.51332  -6.610 4.60e-11 ***
+## countrySyria                   58.21350    5.44848  10.684  < 2e-16 ***
+## countryTaiwan                 -26.49974    5.31898  -4.982 6.68e-07 ***
+## countryTajikistan              42.48079    7.41489   5.729 1.12e-08 ***
+## countryTanzania                34.05678    5.39135   6.317 3.11e-10 ***
+## countryThailand                14.83136    5.24611   2.827 0.004731 ** 
+## countryTimor-Leste             27.91116    7.91553   3.526 0.000429 ***
+## countryTogo                    50.66954    5.48873   9.232  < 2e-16 ***
+## countryTrinidad & Tob.          6.63797    5.41656   1.225 0.220494    
+## countryTunisia                 26.32888    5.29683   4.971 7.08e-07 ***
+## countryTurkey                  26.30778    5.30097   4.963 7.38e-07 ***
+## countryUganda                  -0.07176    5.43516  -0.013 0.989468    
+## countryUkraine                 62.50300    5.65514  11.052  < 2e-16 ***
+## countryUnit. Arab Em.         -27.71261    5.46024  -5.075 4.13e-07 ***
+## countryUnited Kingdom         -41.19281    5.56047  -7.408 1.70e-13 ***
+## countryUnited States          -40.13724    5.47647  -7.329 3.04e-13 ***
+## countryUruguay                 -4.76279    5.36848  -0.887 0.375062    
+## countryVenezuela               43.10902    5.35548   8.050 1.23e-15 ***
+## countryVietnam                 54.12606    5.93181   9.125  < 2e-16 ***
+## countryYemen, Rep.             54.73365    7.44193   7.355 2.52e-13 ***
+## countryZambia                  14.52415    5.36503   2.707 0.006828 ** 
+## countryZimbabwe                62.63785    5.42200  11.553  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 16.59 on 2727 degrees of freedom
+##   (833 observations deleted due to missingness)
+## Multiple R-squared:  0.8503, Adjusted R-squared:  0.8412 
+## F-statistic: 93.88 on 165 and 2727 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = rank ~ gov_size + property_rights + sound_money + 
+##     regulation + country, data = econ_free_clean)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -88.449  -7.695   0.475   8.953  56.814 
+## 
+## Coefficients:
+##                               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                   104.3038     5.1461  20.268  < 2e-16 ***
+## gov_size                       -2.9223     0.3899  -7.495 8.92e-14 ***
+## property_rights                -4.2060     0.4644  -9.057  < 2e-16 ***
+## sound_money                    -3.4104     0.2899 -11.763  < 2e-16 ***
+## regulation                      3.7990     0.5320   7.141 1.18e-12 ***
+## countryAlgeria                 62.0310     5.4482  11.386  < 2e-16 ***
+## countryAngola                  65.6009     6.1588  10.652  < 2e-16 ***
+## countryArgentina               34.6584     5.1146   6.776 1.50e-11 ***
+## countryArmenia                -27.0049     5.8888  -4.586 4.73e-06 ***
+## countryAustralia              -41.8456     5.3314  -7.849 5.97e-15 ***
+## countryAustria                -31.9737     5.5384  -5.773 8.66e-09 ***
+## countryAzerbaijan              43.5048     6.0247   7.221 6.65e-13 ***
+## countryBahamas                -15.7944     5.4044  -2.923 0.003501 ** 
+## countryBahrain                -24.4508     5.3265  -4.590 4.62e-06 ***
+## countryBangladesh              34.5409     5.3045   6.512 8.81e-11 ***
+## countryBarbados                22.5584     5.3686   4.202 2.73e-05 ***
+## countryBelarus                 55.6566    16.7704   3.319 0.000916 ***
+## countryBelgium                -27.5468     5.3868  -5.114 3.38e-07 ***
+## countryBelize                   0.8644     5.5879   0.155 0.877075    
+## countryBenin                   35.4313     5.2891   6.699 2.54e-11 ***
+## countryBhutan                  15.6024     9.0541   1.723 0.084957 .  
+## countryBolivia                 28.0600     5.2172   5.378 8.15e-08 ***
+## countryBosnia and Herzegovina  23.1863     6.1285   3.783 0.000158 ***
+## countryBotswana                -8.3835     5.4231  -1.546 0.122248    
+## countryBrazil                  37.5622     5.1187   7.338 2.84e-13 ***
+## countryBrunei Darussalam        8.4304     7.4126   1.137 0.255507    
+## countryBulgaria                -2.3035     5.3755  -0.429 0.668306    
+## countryBurkina Faso            48.4362     6.1965   7.817 7.67e-15 ***
+## countryBurundi                 47.1257     5.3277   8.845  < 2e-16 ***
+## countryCambodia                11.2904     7.2212   1.564 0.118048    
+## countryCameroon                38.3336     5.2494   7.302 3.68e-13 ***
+## countryCanada                 -46.3508     5.3848  -8.608  < 2e-16 ***
+## countryCape Verde              38.7976     7.3006   5.314 1.16e-07 ***
+## countryCentral Afr. Rep.       55.7221     5.4284  10.265  < 2e-16 ***
+## countryChad                    54.8928     5.3431  10.274  < 2e-16 ***
+## countryChile                  -34.4002     5.1537  -6.675 2.98e-11 ***
+## countryChina                   41.3847     5.3774   7.696 1.94e-14 ***
+## countryColombia                17.3660     5.2270   3.322 0.000904 ***
+## countryCongo, Dem. R.          50.0647     5.3948   9.280  < 2e-16 ***
+## countryCongo, Rep. Of          45.7490     5.4250   8.433  < 2e-16 ***
+## countryCosta Rica             -20.1176     5.1881  -3.878 0.000108 ***
+## countryCote d'Ivoire           42.4339     5.3308   7.960 2.49e-15 ***
+## countryCroatia                 16.1081     5.5259   2.915 0.003586 ** 
+## countryCyprus                 -17.0357     5.2851  -3.223 0.001282 ** 
+## countryCzech Rep.              -9.6975     5.5481  -1.748 0.080592 .  
+## countryDenmark                -42.1421     5.6482  -7.461 1.14e-13 ***
+## countryDominican Rep.           4.4660     5.2093   0.857 0.391345    
+## countryEcuador                 36.5486     5.2212   7.000 3.20e-12 ***
+## countryEgypt                   42.4555     5.2283   8.120 6.95e-16 ***
+## countryEl Salvador            -13.9595     5.2553  -2.656 0.007947 ** 
+## countryEstonia                -39.0027     5.5520  -7.025 2.69e-12 ***
+## countryEthiopia                65.5447     6.1119  10.724  < 2e-16 ***
+## countryFiji                     1.1067     5.6130   0.197 0.843703    
+## countryFinland                -37.4327     5.4888  -6.820 1.12e-11 ***
+## countryFrance                 -20.4409     5.3611  -3.813 0.000140 ***
+## countryGabon                   38.4133     5.3218   7.218 6.79e-13 ***
+## countryGambia, The              0.9948     7.2338   0.138 0.890624    
+## countryGeorgia                -34.9967     5.8256  -6.007 2.13e-09 ***
+## countryGermany                -29.0100     5.3537  -5.419 6.53e-08 ***
+## countryGhana                   21.4560     5.2310   4.102 4.22e-05 ***
+## countryGreece                   4.6162     5.1438   0.897 0.369575    
+## countryGuatemala              -14.4387     5.2037  -2.775 0.005563 ** 
+## countryGuinea                  68.6957     9.0474   7.593 4.26e-14 ***
+## countryGuinea-Bissau           50.8178     5.5242   9.199  < 2e-16 ***
+## countryGuyana                  30.7854     5.5781   5.519 3.73e-08 ***
+## countryHaiti                   16.9980     5.4725   3.106 0.001915 ** 
+## countryHonduras                -6.6531     5.2108  -1.277 0.201782    
+## countryHong Kong              -46.1230     5.2812  -8.733  < 2e-16 ***
+## countryHungary                 -7.6406     5.4172  -1.410 0.158527    
+## countryIceland                -15.8132     5.4544  -2.899 0.003771 ** 
+## countryIndia                   22.1521     5.0976   4.346 1.44e-05 ***
+## countryIndonesia               15.1343     5.0929   2.972 0.002988 ** 
+## countryIran                    52.0971     5.3453   9.746  < 2e-16 ***
+## countryIraq                    74.8563    16.8009   4.455 8.71e-06 ***
+## countryIreland                -43.5852     5.3274  -8.181 4.25e-16 ***
+## countryIsrael                  -7.1018     5.1709  -1.373 0.169730    
+## countryItaly                  -12.6072     5.1839  -2.432 0.015079 *  
+## countryJamaica                -13.2802     5.2105  -2.549 0.010866 *  
+## countryJapan                  -34.0259     5.2962  -6.425 1.55e-10 ***
+## countryJordan                 -19.9932     5.2591  -3.802 0.000147 ***
+## countryKazakhstan               6.3248     6.0736   1.041 0.297801    
+## countryKenya                   -3.3198     5.1121  -0.649 0.516140    
+## countryKorea, South           -18.0337     5.1610  -3.494 0.000483 ***
+## countryKuwait                  -3.9298     5.2894  -0.743 0.457570    
+## countryKyrgyz Republic         20.0509     6.0396   3.320 0.000912 ***
+## countryLaos                    24.6113    10.1554   2.423 0.015437 *  
+## countryLatvia                 -27.3824     5.4675  -5.008 5.84e-07 ***
+## countryLebanon                 17.8162     7.2503   2.457 0.014060 *  
+## countryLesotho                 45.0176     6.1804   7.284 4.22e-13 ***
+## countryLiberia                 26.7209    10.1393   2.635 0.008451 ** 
+## countryLibya                   78.9659     9.0775   8.699  < 2e-16 ***
+## countryLithuania              -23.1503     5.4522  -4.246 2.25e-05 ***
+## countryLuxembourg             -34.5142     5.5036  -6.271 4.15e-10 ***
+## countryMacedonia                4.0258     5.8946   0.683 0.494692    
+## countryMadagascar              38.6159     5.3165   7.263 4.89e-13 ***
+## countryMalawi                  38.3031     5.2787   7.256 5.16e-13 ***
+## countryMalaysia                -7.4986     5.2333  -1.433 0.152009    
+## countryMali                    38.0749     5.2385   7.268 4.73e-13 ***
+## countryMalta                  -22.3134     5.3902  -4.140 3.58e-05 ***
+## countryMauritania              54.3865     6.1195   8.887  < 2e-16 ***
+## countryMauritius              -34.0662     5.2858  -6.445 1.36e-10 ***
+## countryMexico                   9.1684     5.1343   1.786 0.074255 .  
+## countryMoldova                 24.6916     6.0607   4.074 4.75e-05 ***
+## countryMongolia                 1.7996     5.9105   0.304 0.760794    
+## countryMontenegro               2.6844     6.1013   0.440 0.659987    
+## countryMorocco                 33.8522     5.2013   6.508 9.00e-11 ***
+## countryMozambique              62.2932     5.8141  10.714  < 2e-16 ***
+## countryMyanmar                 66.2790     5.5637  11.913  < 2e-16 ***
+## countryNamibia                 13.1517     5.5126   2.386 0.017111 *  
+## countryNepal                   38.8001     5.5124   7.039 2.44e-12 ***
+## countryNetherlands            -35.1653     5.4940  -6.401 1.81e-10 ***
+## countryNew Zealand            -45.5285     5.4367  -8.374  < 2e-16 ***
+## countryNicaragua               -5.0795     5.2715  -0.964 0.335345    
+## countryNiger                   49.3264     5.2766   9.348  < 2e-16 ***
+## countryNigeria                 31.5583     5.2595   6.000 2.23e-09 ***
+## countryNorway                 -27.1388     5.4819  -4.951 7.85e-07 ***
+## countryOman                   -14.7503     5.4940  -2.685 0.007301 ** 
+## countryPakistan                32.6514     5.1526   6.337 2.73e-10 ***
+## countryPanama                 -25.1122     5.1818  -4.846 1.33e-06 ***
+## countryPap. New Guinea         10.7039     5.4037   1.981 0.047709 *  
+## countryParaguay                17.0104     5.3323   3.190 0.001439 ** 
+## countryPeru                   -19.9134     5.1881  -3.838 0.000127 ***
+## countryPhilippines             -6.0609     5.1476  -1.177 0.239127    
+## countryPoland                   5.2075     5.3426   0.975 0.329795    
+## countryPortugal               -13.8999     5.2208  -2.662 0.007804 ** 
+## countryQatar                  -25.5191     7.3531  -3.470 0.000528 ***
+## countryRomania                 -6.3423     5.2564  -1.207 0.227691    
+## countryRussia                  34.8341     5.3977   6.454 1.29e-10 ***
+## countryRwanda                   4.9926     5.4849   0.910 0.362768    
+## countrySaudi Arabia            34.8317     7.3589   4.733 2.32e-06 ***
+## countrySenegal                 41.6869     5.2313   7.969 2.33e-15 ***
+## countrySerbia                  28.1311     6.0642   4.639 3.67e-06 ***
+## countrySeychelles              -6.4752     9.0055  -0.719 0.472185    
+## countrySierra Leone            49.7459     5.2970   9.391  < 2e-16 ***
+## countrySingapore              -43.8639     5.2861  -8.298  < 2e-16 ***
+## countrySlovak Rep             -17.6024     5.4759  -3.214 0.001322 ** 
+## countrySlovenia                10.4623     5.5446   1.887 0.059274 .  
+## countrySouth Africa            -2.9777     5.1314  -0.580 0.561769    
+## countrySpain                  -24.4906     5.1548  -4.751 2.13e-06 ***
+## countrySri Lanka               20.3571     5.2230   3.898 9.95e-05 ***
+## countrySudan                   85.1306    16.7996   5.067 4.30e-07 ***
+## countrySuriname                33.1843     7.2513   4.576 4.94e-06 ***
+## countrySwaziland               34.7415     7.3332   4.738 2.27e-06 ***
+## countrySweden                 -28.4678     5.5714  -5.110 3.45e-07 ***
+## countrySwitzerland            -41.0161     5.3445  -7.674 2.29e-14 ***
+## countrySyria                   55.1507     5.2637  10.478  < 2e-16 ***
+## countryTaiwan                 -24.6465     5.1392  -4.796 1.71e-06 ***
+## countryTajikistan              40.2301     7.2314   5.563 2.90e-08 ***
+## countryTanzania                27.9583     5.2189   5.357 9.16e-08 ***
+## countryThailand                 6.6661     5.1042   1.306 0.191662    
+## countryTimor-Leste             28.9340     7.3255   3.950 8.02e-05 ***
+## countryTogo                    44.9184     5.2622   8.536  < 2e-16 ***
+## countryTrinidad & Tob.          1.7702     5.2587   0.337 0.736422    
+## countryTunisia                 18.7237     5.1462   3.638 0.000279 ***
+## countryTurkey                  18.4751     5.1601   3.580 0.000349 ***
+## countryUganda                  -7.7348     5.2980  -1.460 0.144423    
+## countryUkraine                 50.1686     5.5668   9.012  < 2e-16 ***
+## countryUnit. Arab Em.         -31.7002     5.2310  -6.060 1.55e-09 ***
+## countryUnited Kingdom         -45.8550     5.3859  -8.514  < 2e-16 ***
+## countryUnited States          -45.3926     5.3150  -8.541  < 2e-16 ***
+## countryUruguay                 -8.4305     5.1887  -1.625 0.104325    
+## countryVenezuela               36.9166     5.1923   7.110 1.48e-12 ***
+## countryVietnam                 42.6126     5.8111   7.333 2.95e-13 ***
+## countryYemen, Rep.             55.2453     7.2508   7.619 3.49e-14 ***
+## countryZambia                   8.7041     5.2081   1.671 0.094782 .  
+## countryZimbabwe                48.1067     5.3235   9.037  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 16.31 on 2742 degrees of freedom
+##   (818 observations deleted due to missingness)
+## Multiple R-squared:  0.8547, Adjusted R-squared:  0.8459 
+## F-statistic: 97.73 on 165 and 2742 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+The first regression above found that government size has a -3.87
+correlation with rank, while the second found that government size has a
+-2.92 correlation with rank. The first regression involves the removal
+of collinear variable sound money, while the second involves the removal
+of trade. The original regression without the removal of potentially
+multicollinear variables found that government size has a -3.76
+correlation with rank. These betas have very low p-values and are
+statistically significant at the 0.001 confidence interval. This is also
+economically significant, and implies that sound money has a small
+positive correlation with government size, and thus a small negative
+correlation with rank. In the original fixed effects regression, the
+effect of government size may have been slightly understated due to
+sound money. On the contrary, the second regression implies that trade
+has a large negative correlation with government size. As a result, the
+effect of government size may have been overstated in the original fixed
+effects regression.
+
+\hypertarget{log-linear-model}{%
+\subsection{LOG-LINEAR MODEL}\label{log-linear-model}}
+
+The log-linear regression that was run is as follows:
+
+\[ log(\hat{rank}) = b_0 + b_1 * government \ size + b_2 * property \ rights + b_3 * sound \ money + b_4 * trade + b_5 * regulation + b_6 * country \]
+
+The results of this regression are as follows:
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = log(rank) ~ gov_size + property_rights + sound_money + 
+##     trade + regulation + country, data = econ_free_clean)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -2.3142 -0.1396  0.0313  0.1747  1.4428 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                    5.327336   0.104912  50.779  < 2e-16 ***
+## gov_size                      -0.090698   0.008060 -11.253  < 2e-16 ***
+## property_rights               -0.099066   0.009473 -10.457  < 2e-16 ***
+## sound_money                   -0.067474   0.006048 -11.156  < 2e-16 ***
+## trade                          0.029789   0.007787   3.826 0.000133 ***
+## regulation                     0.031509   0.010932   2.882 0.003980 ** 
+## countryAlgeria                 0.478148   0.109500   4.367 1.31e-05 ***
+## countryAngola                  0.432120   0.123466   3.500 0.000473 ***
+## countryArgentina               0.324939   0.103691   3.134 0.001744 ** 
+## countryArmenia                -0.678666   0.117604  -5.771 8.78e-09 ***
+## countryAustralia              -1.665625   0.106988 -15.568  < 2e-16 ***
+## countryAustria                -1.006867   0.111492  -9.031  < 2e-16 ***
+## countryAzerbaijan              0.451498   0.120553   3.745 0.000184 ***
+## countryBahamas                -0.147042   0.108853  -1.351 0.176861    
+## countryBahrain                -0.485923   0.106803  -4.550 5.61e-06 ***
+## countryBangladesh              0.427578   0.106333   4.021 5.95e-05 ***
+## countryBarbados                0.264668   0.107622   2.459 0.013985 *  
+## countryBelarus                 0.590655   0.331982   1.779 0.075322 .  
+## countryBelgium                -0.840960   0.109225  -7.699 1.90e-14 ***
+## countryBelize                  0.083836   0.111742   0.750 0.453156    
+## countryBenin                   0.359160   0.108254   3.318 0.000919 ***
+## countryBhutan                  0.368849   0.179779   2.052 0.040296 *  
+## countryBolivia                 0.246829   0.105192   2.346 0.019023 *  
+## countryBosnia and Herzegovina  0.242305   0.122718   1.974 0.048427 *  
+## countryBotswana               -0.140754   0.108760  -1.294 0.195715    
+## countryBrazil                  0.373668   0.103134   3.623 0.000296 ***
+## countryBrunei Darussalam       0.101514   0.147636   0.688 0.491764    
+## countryBulgaria               -0.084362   0.107857  -0.782 0.434187    
+## countryBurkina Faso            0.426030   0.123710   3.444 0.000582 ***
+## countryBurundi                 0.399374   0.107073   3.730 0.000195 ***
+## countryCambodia                0.230559   0.143760   1.604 0.108879    
+## countryCameroon                0.371161   0.105166   3.529 0.000424 ***
+## countryCanada                 -1.978406   0.108029 -18.314  < 2e-16 ***
+## countryCape Verde              0.478911   0.145510   3.291 0.001010 ** 
+## countryCentral Afr. Rep.       0.460402   0.108827   4.231 2.41e-05 ***
+## countryChad                    0.500428   0.108486   4.613 4.16e-06 ***
+## countryChile                  -1.077807   0.103593 -10.404  < 2e-16 ***
+## countryChina                   0.450234   0.108235   4.160 3.28e-05 ***
+## countryColombia                0.208608   0.104751   1.991 0.046531 *  
+## countryCongo, Dem. R.          0.330801   0.108259   3.056 0.002268 ** 
+## countryCongo, Rep. Of          0.206076   0.108926   1.892 0.058610 .  
+## countryCosta Rica             -0.446937   0.104149  -4.291 1.84e-05 ***
+## countryCote d'Ivoire           0.384006   0.106772   3.597 0.000328 ***
+## countryCroatia                 0.164331   0.111154   1.478 0.139414    
+## countryCyprus                 -0.485424   0.106064  -4.577 4.93e-06 ***
+## countryCzech Rep.             -0.220256   0.111688  -1.972 0.048703 *  
+## countryDenmark                -1.384442   0.113907 -12.154  < 2e-16 ***
+## countryDominican Rep.          0.076855   0.104362   0.736 0.461530    
+## countryEcuador                 0.333786   0.104998   3.179 0.001495 ** 
+## countryEgypt                   0.481012   0.105077   4.578 4.91e-06 ***
+## countryEl Salvador            -0.357459   0.105233  -3.397 0.000692 ***
+## countryEstonia                -1.254273   0.111635 -11.235  < 2e-16 ***
+## countryEthiopia                0.650967   0.122093   5.332 1.05e-07 ***
+## countryFiji                    0.093841   0.112252   0.836 0.403235    
+## countryFinland                -1.280850   0.110535 -11.588  < 2e-16 ***
+## countryFrance                 -0.506338   0.108265  -4.677 3.06e-06 ***
+## countryGabon                   0.309634   0.106591   2.905 0.003704 ** 
+## countryGambia, The             0.057555   0.144031   0.400 0.689481    
+## countryGeorgia                -1.015975   0.116656  -8.709  < 2e-16 ***
+## countryGermany                -1.026136   0.108299  -9.475  < 2e-16 ***
+## countryGhana                   0.284988   0.104852   2.718 0.006609 ** 
+## countryGreece                 -0.063154   0.103990  -0.607 0.543695    
+## countryGuatemala              -0.305809   0.104412  -2.929 0.003430 ** 
+## countryGuinea                  0.659855   0.179710   3.672 0.000245 ***
+## countryGuinea-Bissau           0.311836   0.113938   2.737 0.006243 ** 
+## countryGuyana                  0.250372   0.113734   2.201 0.027793 *  
+## countryHaiti                   0.201185   0.110974   1.813 0.069958 .  
+## countryHonduras               -0.061768   0.105566  -0.585 0.558520    
+## countryHong Kong              -3.612131   0.105872 -34.118  < 2e-16 ***
+## countryHungary                -0.174794   0.108942  -1.604 0.108726    
+## countryIceland                -0.566836   0.109454  -5.179 2.40e-07 ***
+## countryIndia                   0.363803   0.103412   3.518 0.000442 ***
+## countryIndonesia               0.168206   0.102306   1.644 0.100261    
+## countryIran                    0.593476   0.107697   5.511 3.91e-08 ***
+## countryIraq                    0.577038   0.332445   1.736 0.082724 .  
+## countryIreland                -1.664502   0.107332 -15.508  < 2e-16 ***
+## countryIsrael                 -0.229216   0.104621  -2.191 0.028542 *  
+## countryItaly                  -0.340210   0.104929  -3.242 0.001200 ** 
+## countryJamaica                -0.230379   0.104283  -2.209 0.027246 *  
+## countryJapan                  -1.072477   0.106304 -10.089  < 2e-16 ***
+## countryJordan                 -0.384409   0.105426  -3.646 0.000271 ***
+## countryKazakhstan              0.255290   0.121641   2.099 0.035933 *  
+## countryKenya                  -0.023466   0.102452  -0.229 0.818850    
+## countryKorea, South           -0.392161   0.103630  -3.784 0.000158 ***
+## countryKuwait                 -0.127785   0.107304  -1.191 0.233808    
+## countryKyrgyz Republic         0.331727   0.120517   2.753 0.005953 ** 
+## countryLaos                    0.469680   0.201410   2.332 0.019775 *  
+## countryLatvia                 -0.724526   0.109863  -6.595 5.10e-11 ***
+## countryLebanon                 0.347922   0.144317   2.411 0.015983 *  
+## countryLesotho                 0.445517   0.123433   3.609 0.000312 ***
+## countryLiberia                 0.482797   0.201216   2.399 0.016489 *  
+## countryLibya                   0.544239   0.180362   3.017 0.002572 ** 
+## countryLithuania              -0.626129   0.109484  -5.719 1.19e-08 ***
+## countryLuxembourg             -1.376896   0.111153 -12.387  < 2e-16 ***
+## countryMacedonia               0.047531   0.117892   0.403 0.686851    
+## countryMadagascar              0.427717   0.106534   4.015 6.11e-05 ***
+## countryMalawi                  0.383469   0.105822   3.624 0.000296 ***
+## countryMalaysia               -0.255988   0.104978  -2.438 0.014813 *  
+## countryMali                    0.331979   0.105124   3.158 0.001606 ** 
+## countryMalta                  -0.609981   0.108358  -5.629 1.99e-08 ***
+## countryMauritania              0.491059   0.122212   4.018 6.03e-05 ***
+## countryMauritius              -1.193353   0.105848 -11.274  < 2e-16 ***
+## countryMexico                  0.117262   0.103012   1.138 0.255080    
+## countryMoldova                 0.346219   0.121055   2.860 0.004268 ** 
+## countryMongolia                0.121734   0.117991   1.032 0.302296    
+## countryMontenegro              0.026979   0.122202   0.221 0.825287    
+## countryMorocco                 0.394475   0.104424   3.778 0.000162 ***
+## countryMozambique              0.539318   0.116652   4.623 3.95e-06 ***
+## countryMyanmar                 0.582758   0.112491   5.181 2.37e-07 ***
+## countryNamibia                 0.226910   0.110361   2.056 0.039871 *  
+## countryNepal                   0.444661   0.110266   4.033 5.67e-05 ***
+## countryNetherlands            -1.142856   0.111125 -10.284  < 2e-16 ***
+## countryNew Zealand            -2.281418   0.109216 -20.889  < 2e-16 ***
+## countryNicaragua              -0.106834   0.105764  -1.010 0.312527    
+## countryNiger                   0.428927   0.105861   4.052 5.23e-05 ***
+## countryNigeria                 0.294684   0.105358   2.797 0.005195 ** 
+## countryNorway                 -0.722728   0.110340  -6.550 6.85e-11 ***
+## countryOman                   -0.372122   0.110428  -3.370 0.000763 ***
+## countryPakistan                0.350047   0.103329   3.388 0.000715 ***
+## countryPanama                 -0.636665   0.104447  -6.096 1.24e-09 ***
+## countryPap. New Guinea         0.123765   0.108052   1.145 0.252135    
+## countryParaguay                0.228967   0.107115   2.138 0.032639 *  
+## countryPeru                   -0.503021   0.104209  -4.827 1.46e-06 ***
+## countryPhilippines            -0.066602   0.103069  -0.646 0.518215    
+## countryPoland                  0.031432   0.107371   0.293 0.769743    
+## countryPortugal               -0.373475   0.105585  -3.537 0.000411 ***
+## countryQatar                  -0.472017   0.146333  -3.226 0.001272 ** 
+## countryRomania                -0.231318   0.107062  -2.161 0.030814 *  
+## countryRussia                  0.467090   0.108124   4.320 1.62e-05 ***
+## countryRwanda                  0.014587   0.111308   0.131 0.895744    
+## countrySaudi Arabia            0.402933   0.146499   2.750 0.005991 ** 
+## countrySenegal                 0.384667   0.105076   3.661 0.000256 ***
+## countrySerbia                  0.346244   0.121361   2.853 0.004363 ** 
+## countrySeychelles             -0.087755   0.178940  -0.490 0.623880    
+## countrySierra Leone            0.500702   0.106206   4.714 2.55e-06 ***
+## countrySingapore              -2.768489   0.106243 -26.058  < 2e-16 ***
+## countrySlovak Rep             -0.430497   0.110138  -3.909 9.51e-05 ***
+## countrySlovenia                0.099986   0.111749   0.895 0.371009    
+## countrySouth Africa           -0.066630   0.102938  -0.647 0.517505    
+## countrySpain                  -0.611769   0.103882  -5.889 4.36e-09 ***
+## countrySri Lanka               0.294596   0.104599   2.816 0.004891 ** 
+## countrySudan                   0.955405   0.333183   2.868 0.004169 ** 
+## countrySuriname                0.415918   0.144413   2.880 0.004007 ** 
+## countrySwaziland               0.385456   0.145906   2.642 0.008293 ** 
+## countrySweden                 -0.742029   0.112618  -6.589 5.30e-11 ***
+## countrySwitzerland            -2.323395   0.107166 -21.680  < 2e-16 ***
+## countrySyria                   0.492070   0.105831   4.650 3.48e-06 ***
+## countryTaiwan                 -0.730979   0.103353  -7.073 1.92e-12 ***
+## countryTajikistan              0.557264   0.144027   3.869 0.000112 ***
+## countryTanzania                0.390325   0.104826   3.724 0.000200 ***
+## countryThailand                0.064364   0.102364   0.629 0.529550    
+## countryTimor-Leste             0.295515   0.153809   1.921 0.054798 .  
+## countryTogo                    0.438515   0.106753   4.108 4.11e-05 ***
+## countryTrinidad & Tob.        -0.077928   0.105469  -0.739 0.460046    
+## countryTunisia                 0.209787   0.103266   2.032 0.042300 *  
+## countryTurkey                  0.221918   0.103829   2.137 0.032660 *  
+## countryUganda                 -0.133218   0.105984  -1.257 0.208874    
+## countryUkraine                 0.459295   0.111722   4.111 4.05e-05 ***
+## countryUnit. Arab Em.         -0.793754   0.106595  -7.446 1.28e-13 ***
+## countryUnited Kingdom         -1.919490   0.108386 -17.710  < 2e-16 ***
+## countryUnited States          -2.078305   0.106561 -19.503  < 2e-16 ***
+## countryUruguay                -0.187698   0.104675  -1.793 0.073061 .  
+## countryVenezuela               0.022656   0.104474   0.217 0.828340    
+## countryVietnam                 0.549396   0.116141   4.730 2.35e-06 ***
+## countryYemen, Rep.             0.606033   0.144552   4.192 2.85e-05 ***
+## countryZambia                  0.104261   0.104529   0.997 0.318640    
+## countryZimbabwe                0.379070   0.106822   3.549 0.000394 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.3223 on 2724 degrees of freedom
+##   (835 observations deleted due to missingness)
+## Multiple R-squared:  0.8949, Adjusted R-squared:  0.8884 
+## F-statistic: 139.7 on 166 and 2724 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Based on the results of the regression, an in government size by one
+unit decreases rank by 8.67\%. This was found to be statistically
+significant at the 0.001 significance level. This result is
+statistically significant, because a small change in government size
+contributes to a larger change on the change in rank. This is
+economically significant and implies that government size has a
+significant, diminishing impact on economic freedom.
+
+\hypertarget{log-log-model}{%
+\subsubsection{LOG-LOG MODEL}\label{log-log-model}}
+
+The log-log regression that was run is as follows:
+
+\[ log(\hat{rank}) = b_0 + b_1 * log(government) \ size + b_2 * log(property \ rights) + b_3 * log(sound \ money) + b_4 * log(trade) + b_5 * log(regulation) + b_6 * country \]
+
+The results of this regression are as follows:
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = log(rank) ~ log(gov_size) + log(property_rights) + 
+##     log(sound_money) + log(trade) + log(regulation) + country, 
+##     data = econ_free_clean2, na.action = na.omit)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.34110 -0.13648  0.02969  0.17603  1.49399 
+## 
+## Coefficients:
+##                                Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)                    5.466927   0.134686  40.590  < 2e-16 ***
+## log(gov_size)                 -0.479390   0.043930 -10.913  < 2e-16 ***
+## log(property_rights)          -0.330757   0.039079  -8.464  < 2e-16 ***
+## log(sound_money)              -0.266231   0.028524  -9.333  < 2e-16 ***
+## log(trade)                     0.180064   0.031735   5.674 1.54e-08 ***
+## log(regulation)                0.110889   0.063369   1.750 0.080249 .  
+## countryAlgeria                 0.587902   0.111660   5.265 1.51e-07 ***
+## countryAngola                  0.574333   0.125458   4.578 4.91e-06 ***
+## countryArgentina               0.453111   0.105533   4.294 1.82e-05 ***
+## countryArmenia                -0.693375   0.119990  -5.779 8.39e-09 ***
+## countryAustralia              -1.757454   0.106343 -16.526  < 2e-16 ***
+## countryAustria                -1.127859   0.110495 -10.207  < 2e-16 ***
+## countryAzerbaijan              0.547219   0.121975   4.486 7.55e-06 ***
+## countryBahamas                -0.123300   0.108954  -1.132 0.257873    
+## countryBahrain                -0.418405   0.108121  -3.870 0.000112 ***
+## countryBangladesh              0.571227   0.110140   5.186 2.30e-07 ***
+## countryBarbados                0.344234   0.108681   3.167 0.001555 ** 
+## countryBelarus                 0.712234   0.338509   2.104 0.035467 *  
+## countryBelgium                -0.898006   0.109077  -8.233 2.81e-16 ***
+## countryBelize                  0.163912   0.112757   1.454 0.146152    
+## countryBenin                   0.491149   0.109934   4.468 8.23e-06 ***
+## countryBhutan                  0.400644   0.182685   2.193 0.028386 *  
+## countryBolivia                 0.335420   0.108158   3.101 0.001947 ** 
+## countryBosnia and Herzegovina  0.345117   0.124341   2.776 0.005548 ** 
+## countryBotswana               -0.122975   0.109668  -1.121 0.262243    
+## countryBrazil                  0.496198   0.108228   4.585 4.75e-06 ***
+## countryBrunei Darussalam       0.184089   0.149349   1.233 0.217830    
+## countryBulgaria               -0.029416   0.109454  -0.269 0.788139    
+## countryBurkina Faso            0.578789   0.125088   4.627 3.88e-06 ***
+## countryBurundi                 0.568438   0.109027   5.214 1.99e-07 ***
+## countryCambodia                0.243544   0.146734   1.660 0.097077 .  
+## countryCameroon                0.496485   0.107053   4.638 3.69e-06 ***
+## countryCanada                 -2.053771   0.107021 -19.190  < 2e-16 ***
+## countryCape Verde              0.526500   0.147892   3.560 0.000377 ***
+## countryCentral Afr. Rep.       0.574236   0.111569   5.147 2.84e-07 ***
+## countryChad                    0.614724   0.111164   5.530 3.51e-08 ***
+## countryChile                  -1.102028   0.106252 -10.372  < 2e-16 ***
+## countryChina                   0.485341   0.109935   4.415 1.05e-05 ***
+## countryColombia                0.321154   0.106496   3.016 0.002588 ** 
+## countryCongo, Dem. R.          0.441375   0.115160   3.833 0.000130 ***
+## countryCongo, Rep. Of          0.354213   0.111075   3.189 0.001444 ** 
+## countryCosta Rica             -0.439307   0.105986  -4.145 3.50e-05 ***
+## countryCote d'Ivoire           0.499391   0.108955   4.583 4.78e-06 ***
+## countryCroatia                 0.219771   0.112430   1.955 0.050716 .  
+## countryCyprus                 -0.498315   0.107569  -4.632 3.78e-06 ***
+## countryCzech Rep.             -0.205973   0.112702  -1.828 0.067721 .  
+## countryDenmark                -1.501208   0.112579 -13.335  < 2e-16 ***
+## countryDominican Rep.          0.157655   0.106192   1.485 0.137762    
+## countryEcuador                 0.455030   0.106596   4.269 2.03e-05 ***
+## countryEgypt                   0.552506   0.106976   5.165 2.58e-07 ***
+## countryEl Salvador            -0.351628   0.107376  -3.275 0.001071 ** 
+## countryEstonia                -1.281122   0.111898 -11.449  < 2e-16 ***
+## countryEthiopia                0.794965   0.123693   6.427 1.53e-10 ***
+## countryFiji                    0.198016   0.112157   1.766 0.077587 .  
+## countryFinland                -1.403584   0.108880 -12.891  < 2e-16 ***
+## countryFrance                 -0.553754   0.108653  -5.097 3.70e-07 ***
+## countryGabon                   0.480226   0.107585   4.464 8.39e-06 ***
+## countryGambia, The             0.087522   0.146864   0.596 0.551264    
+## countryGeorgia                -0.981343   0.118237  -8.300  < 2e-16 ***
+## countryGermany                -1.138009   0.107073 -10.628  < 2e-16 ***
+## countryGhana                   0.401725   0.107575   3.734 0.000192 ***
+## countryGreece                 -0.056924   0.105324  -0.540 0.588922    
+## countryGuatemala              -0.294051   0.106445  -2.762 0.005776 ** 
+## countryGuinea                  0.783878   0.183262   4.277 1.96e-05 ***
+## countryGuinea-Bissau           0.439290   0.116142   3.782 0.000159 ***
+## countryGuyana                  0.327927   0.115472   2.840 0.004547 ** 
+## countryHaiti                   0.258080   0.114072   2.262 0.023749 *  
+## countryHonduras               -0.034872   0.107683  -0.324 0.746086    
+## countryHong Kong              -3.726661   0.105558 -35.304  < 2e-16 ***
+## countryHungary                -0.174851   0.109936  -1.590 0.111843    
+## countryIceland                -0.613279   0.107958  -5.681 1.48e-08 ***
+## countryIndia                   0.451964   0.105116   4.300 1.77e-05 ***
+## countryIndonesia               0.237997   0.104472   2.278 0.022799 *  
+## countryIran                    0.688478   0.110083   6.254 4.63e-10 ***
+## countryIraq                    0.711594   0.339381   2.097 0.036109 *  
+## countryIreland                -1.715347   0.106685 -16.079  < 2e-16 ***
+## countryIsrael                 -0.224529   0.105904  -2.120 0.034086 *  
+## countryItaly                  -0.337540   0.105806  -3.190 0.001438 ** 
+## countryJamaica                -0.181074   0.106167  -1.706 0.088206 .  
+## countryJapan                  -1.136835   0.106378 -10.687  < 2e-16 ***
+## countryJordan                 -0.324989   0.107029  -3.036 0.002417 ** 
+## countryKazakhstan              0.279991   0.123512   2.267 0.023474 *  
+## countryKenya                   0.048969   0.104311   0.469 0.638786    
+## countryKorea, South           -0.400908   0.105211  -3.811 0.000142 ***
+## countryKuwait                 -0.076906   0.108764  -0.707 0.479568    
+## countryKyrgyz Republic         0.388823   0.122938   3.163 0.001580 ** 
+## countryLaos                    0.484589   0.205417   2.359 0.018392 *  
+## countryLatvia                 -0.724457   0.110962  -6.529 7.89e-11 ***
+## countryLebanon                 0.320316   0.147105   2.177 0.029532 *  
+## countryLesotho                 0.550979   0.125150   4.403 1.11e-05 ***
+## countryLiberia                 0.487321   0.205353   2.373 0.017709 *  
+## countryLibya                   0.697700   0.183879   3.794 0.000151 ***
+## countryLithuania              -0.627757   0.110779  -5.667 1.61e-08 ***
+## countryLuxembourg             -1.487406   0.109535 -13.579  < 2e-16 ***
+## countryMacedonia               0.152904   0.119102   1.284 0.199318    
+## countryMadagascar              0.508436   0.108962   4.666 3.22e-06 ***
+## countryMalawi                  0.510089   0.107083   4.763 2.00e-06 ***
+## countryMalaysia               -0.152906   0.105514  -1.449 0.147412    
+## countryMali                    0.460134   0.106883   4.305 1.73e-05 ***
+## countryMalta                  -0.634510   0.108831  -5.830 6.19e-09 ***
+## countryMauritania              0.627261   0.124197   5.051 4.70e-07 ***
+## countryMauritius              -1.210775   0.107600 -11.253  < 2e-16 ***
+## countryMexico                  0.204322   0.104819   1.949 0.051364 .  
+## countryMoldova                 0.433827   0.123103   3.524 0.000432 ***
+## countryMongolia                0.158614   0.120180   1.320 0.187015    
+## countryMontenegro              0.097617   0.123759   0.789 0.430317    
+## countryMorocco                 0.484054   0.106225   4.557 5.42e-06 ***
+## countryMozambique              0.658725   0.118626   5.553 3.08e-08 ***
+## countryMyanmar                 0.804901   0.116853   6.888 7.00e-12 ***
+## countryNamibia                 0.299639   0.110506   2.712 0.006740 ** 
+## countryNepal                   0.558447   0.112053   4.984 6.63e-07 ***
+## countryNetherlands            -1.256603   0.109941 -11.430  < 2e-16 ***
+## countryNew Zealand            -2.373282   0.107338 -22.110  < 2e-16 ***
+## countryNicaragua              -0.042386   0.110332  -0.384 0.700884    
+## countryNiger                   0.542448   0.108098   5.018 5.56e-07 ***
+## countryNigeria                 0.443836   0.107032   4.147 3.48e-05 ***
+## countryNorway                 -0.841685   0.109235  -7.705 1.82e-14 ***
+## countryOman                   -0.296892   0.110604  -2.684 0.007313 ** 
+## countryPakistan                0.480151   0.105284   4.561 5.33e-06 ***
+## countryPanama                 -0.615322   0.106116  -5.799 7.46e-09 ***
+## countryPap. New Guinea         0.262710   0.108787   2.415 0.015805 *  
+## countryParaguay                0.265919   0.109172   2.436 0.014923 *  
+## countryPeru                   -0.490939   0.107274  -4.576 4.94e-06 ***
+## countryPhilippines            -0.020597   0.105137  -0.196 0.844697    
+## countryPoland                  0.059200   0.108859   0.544 0.586610    
+## countryPortugal               -0.413216   0.105941  -3.900 9.84e-05 ***
+## countryQatar                  -0.427320   0.148122  -2.885 0.003946 ** 
+## countryRomania                -0.197771   0.108803  -1.818 0.069220 .  
+## countryRussia                  0.533090   0.110118   4.841 1.36e-06 ***
+## countryRwanda                  0.055589   0.113152   0.491 0.623273    
+## countrySaudi Arabia            0.490442   0.148667   3.299 0.000983 ***
+## countrySenegal                 0.510237   0.106939   4.771 1.93e-06 ***
+## countrySerbia                  0.446416   0.123250   3.622 0.000298 ***
+## countrySeychelles             -0.052977   0.182354  -0.291 0.771442    
+## countrySierra Leone            0.564183   0.108811   5.185 2.32e-07 ***
+## countrySingapore              -2.875776   0.105519 -27.254  < 2e-16 ***
+## countrySlovak Rep             -0.412935   0.111392  -3.707 0.000214 ***
+## countrySlovenia                0.096966   0.113040   0.858 0.391077    
+## countrySouth Africa            0.010160   0.104435   0.097 0.922509    
+## countrySpain                  -0.621861   0.104936  -5.926 3.50e-09 ***
+## countrySri Lanka               0.402735   0.106205   3.792 0.000153 ***
+## countrySudan                   1.068992   0.339678   3.147 0.001667 ** 
+## countrySuriname                0.484356   0.147143   3.292 0.001009 ** 
+## countrySwaziland               0.509653   0.148124   3.441 0.000589 ***
+## countrySweden                 -0.878679   0.113337  -7.753 1.26e-14 ***
+## countrySwitzerland            -2.460106   0.106637 -23.070  < 2e-16 ***
+## countrySyria                   0.613792   0.107986   5.684 1.46e-08 ***
+## countryTaiwan                 -0.780502   0.104623  -7.460 1.16e-13 ***
+## countryTajikistan              0.601907   0.146877   4.098 4.29e-05 ***
+## countryTanzania                0.474139   0.106616   4.447 9.05e-06 ***
+## countryThailand                0.129006   0.103968   1.241 0.214777    
+## countryTimor-Leste             0.387565   0.156545   2.476 0.013357 *  
+## countryTogo                    0.518201   0.109341   4.739 2.26e-06 ***
+## countryTrinidad & Tob.         0.007549   0.106959   0.071 0.943736    
+## countryTunisia                 0.314315   0.104682   3.003 0.002702 ** 
+## countryTurkey                  0.296432   0.105501   2.810 0.004994 ** 
+## countryUganda                 -0.082825   0.109153  -0.759 0.448039    
+## countryUkraine                 0.602227   0.112805   5.339 1.01e-07 ***
+## countryUnit. Arab Em.         -0.745929   0.107781  -6.921 5.59e-12 ***
+## countryUnited Kingdom         -1.989393   0.107327 -18.536  < 2e-16 ***
+## countryUnited States          -2.156323   0.106228 -20.299  < 2e-16 ***
+## countryUruguay                -0.149542   0.106153  -1.409 0.159027    
+## countryVenezuela               0.158439   0.106672   1.485 0.137585    
+## countryVietnam                 0.644551   0.117824   5.470 4.90e-08 ***
+## countryYemen, Rep.             0.669858   0.147555   4.540 5.88e-06 ***
+## countryZambia                  0.129031   0.106553   1.211 0.226018    
+## countryZimbabwe                0.522366   0.113790   4.591 4.62e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.3291 on 2706 degrees of freedom
+##   (853 observations deleted due to missingness)
+## Multiple R-squared:  0.8906, Adjusted R-squared:  0.8839 
+## F-statistic: 132.7 on 166 and 2706 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Based on the results of the regression, a 1\% increase in government
+size decreases the rank by 47.94\%. This was found to be statistically
+significant at the 0.001 significance level. This result is
+significantly significant, because a small change in government size
+contributes to a large change on the change in rank. This is
+economically significant because it puts to scale the large impact
+government size has on economic freedom.
+
+\end{document}

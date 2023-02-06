@@ -119,7 +119,7 @@ log_log <- lm(formula = log(rank) ~ log(gov_size) + log(property_rights) + log(s
 
 stargazer(simple_reg, multivar_reg, fixed_eff_est, int_term, multi_1, multi_2, log_lin, log_log, 
           omit = 'country', 
-          type = 'text',
+          type = 'latex',
           title = "What contributes to the rank of a country?",
           align = TRUE,
           column.labels = c("Simple Regression", "Multivariate Regression", " Fixed Effects Estimator", "Multivariate Regression with Interaction Term", "Multicollinearity Analysis 1", "Multicollinearity Analysis 2", "Log-Linear Model", "Log-Log Model"),
@@ -180,7 +180,7 @@ The results of this regression are as follows:
 ```{r}
 summary(int_term)
 ```
-From this regression, it is clear that a 1 point increase in the interaction between trade and regulation correlates with a -1.21 decrease in rank. As a result, a 1 point increase in trade and 1 point increase in regulation correlates with, respectively, a 9.20 and 10.91 increase in rank. These values have very low p-values and are statistically significant at the 0.001 confidence interval. Economically, this is significant and implies that
+From this regression, it is clear that a 1 point increase in the interaction between trade and regulation correlates with a -1.21 decrease in rank. As a result, a 1 point increase in trade and 1 point increase in regulation correlates with, respectively, a 9.20 and 10.91 increase in rank. These values have very low p-values and are statistically significant at the 0.001 confidence interval. Economically, this is significant and implies the difference in the effect of trade on regulation.
 
 ## MULTICOLLINEARITY ANALYSIS
 
