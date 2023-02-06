@@ -165,7 +165,7 @@ The results of this regression are as follows:
 summary(fixed_eff_est)
 ```
 
-From the results of this regression, it is clear that a 1 point increase in government size correlates with a 3.76 decrease in rank on average, holding property rights, sound money, trade, and regulation constant, as well as applying fixed effects with respect to each country. This is a decrease of lower magnitude than the multivariate regression, implying that government size is potentially overstated in the multivariate regression. This means that other features about the countries themselves aside from government size impact the decrease in rank. Similarly, the regression found that a 1 point increase in property rights correlates with a -4.86 decrease in rank on average. However, this is of wildly less magnitude than the multivariate regression, which found that a 1 point increase correlates with a -13.95 decrease in rank on average. This implies that government size was significantly more overstated. After adding fixed effects, another interesting finding is that trade had a positive correlation with rank, whereas in the multivariate regression it had a negative correlation. These have statistically small p-values and are thus statistically significant.
+From the results of this regression, it is clear that a 1 point increase in government size correlates with a 3.76 decrease in rank on average, holding property rights, sound money, trade, and regulation constant, as well as applying fixed effects with respect to each country. This is a decrease of lower magnitude than the multivariate regression, implying that government size is potentially overstated in the multivariate regression. This means that other features about the countries themselves aside from government size impact the decrease in rank. Similarly, the regression found that a 1 point increase in property rights correlates with a -4.86 decrease in rank on average. However, this is of wildly less magnitude than the multivariate regression, which found that a 1 point increase correlates with a -13.95 decrease in rank on average. This implies that government size was significantly more overstated. After adding fixed effects, another interesting finding is that trade had a positive correlation with rank, whereas in the multivariate regression it had a negative correlation. These values have very low p-values and are statistically significant at the 0.001 confidence interval. For the reasons above, they are also economically significant.
 
 ## MULTIVARIATE REGRESSION WITH INTERACTION TERM
 
@@ -178,7 +178,7 @@ The results of this regression are as follows:
 ```{r}
 summary(int_term)
 ```
-From this regression, it is clear that a 1 point increase in the interaction between trade and regulation correlates with a -1.21 decrease in rank. As a result, a 1 point increase in trade and 1 point increase in regulation correlates with, respectively, a 9.20 and 10.91 increase in rank. These have statistically small p-values and are thus statistically significant. Economically, this is significant and implies that
+From this regression, it is clear that a 1 point increase in the interaction between trade and regulation correlates with a -1.21 decrease in rank. As a result, a 1 point increase in trade and 1 point increase in regulation correlates with, respectively, a 9.20 and 10.91 increase in rank. These values have very low p-values and are statistically significant at the 0.001 confidence interval. Economically, this is significant and implies that
 
 ## MULTICOLLINEARITY ANALYSIS
 
@@ -196,10 +196,7 @@ summary(multi_1)
 summary(multi_2)
 ```
  
- 
- -3.7618 
- -3.86617
- -2.9223
+The first regression above found that government size has a -3.87 correlation with rank, while the second found that government size has a -2.92 correlation with rank. The first regression involves the removal of collinear variable sound money, while the second involves the removal of trade. The original regression without the removal of potentially multicollinear variables found that government size has a -3.76 correlation with rank. These betas have very low p-values and are statistically significant at the 0.001 confidence interval. This is also economically significant, and implies that sound money has a small positive correlation with government size, and thus a small negative correlation with rank. In the original fixed effects regression, the effect of government size may have been slightly understated due to sound money. On the contrary, the second regression implies that trade has a large negative correlation with government size. As a result, the effect of government size may have been overstated in the original fixed effects regression.
 
 ## LOG-LINEAR MODEL
 
@@ -212,7 +209,7 @@ The results of this regression are as follows:
 summary(log_lin) 
 ```
 
-Based on the results of the regression, an in government size by one unit decreases rank by 8.67%. This was found to be statistically significant at the 0.001 significance level. This result is significantly significant, because a small change in government size contributes to a larger change on the change in rank.
+Based on the results of the regression, an in government size by one unit decreases rank by 8.67%. This was found to be statistically significant at the 0.001 significance level. This result is statistically significant, because a small change in government size contributes to a larger change on the change in rank.
 
 ### LOG-LOG MODEL
 
