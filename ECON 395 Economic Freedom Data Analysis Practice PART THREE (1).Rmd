@@ -108,8 +108,8 @@ fixed_eff_est <- coeftest(fixed_eff_est, vcov. = vcovHC(fixed_eff_est, type = 'H
 ```
 
 ```{r echo=FALSE, warning=FALSE}
-my_table <- data.frame(Abbreviation = c("MR", "FE"),
-                       Full = c("Multivariate Regression", "Fixed Effects Estimator"))
+my_table <- data.frame(Abbreviation = c("MR", "FE", "IVE", "DID"),
+                       Full = c("Multivariate Regression", "Fixed Effects Estimator", "Instrumental Variable Estimator", "Difference-in-Difference"))
 
 kable(my_table, caption = "Regressions Legend") %>%
   kable_classic(latex_options = "HOLD_position")
@@ -121,7 +121,7 @@ These results are summarized in the following table:
 \blandscape
 
 ```{r, comment = NA, warning = FALSE, echo=FALSE}
-stargazer(multivar_reg, fixed_eff_est,
+stargazer(multivar_reg, fixed_eff_est, didreg,
           type = 'text',
           omit = 'country',
           no.space = TRUE,
@@ -129,8 +129,8 @@ stargazer(multivar_reg, fixed_eff_est,
           font.size = "tiny",
           omit.stat=c("ser","f", "adj.rsq"),
           header = FALSE,
-          title = "Table 2: Regression Results",
-          column.labels = c("MR", "FE"))
+          title = "Table 1: Regression Results",
+          column.labels = c("MR", "FE", "DID"))
 ```
 
 \elandscape
@@ -145,11 +145,43 @@ stargazer(multivar_reg, fixed_eff_est,
 
 
 ## Difference-in-Difference Estimator
-```{r}
 
+On November 4, 2008, Americans elected Illinois senator Barack Obama to be the 44th President of the United States. The result was historic, as Obama, a first-term U.S. senator, became, when he was inaugurated on January 20, 2009, the country’s first African American president. The following analysis will use difference-in-difference to investigate whether this had a causal impact on rank in the United States.
+
+The difference-in-differences method is an experimental research design that is often used to estimate the causal effect of a treatment or intervention on an outcome variable. The basic idea behind the difference-in-difference method is to compare the change in the outcome variable over time for a treatment group and a control group, and then take the difference between these changes as the estimate of the treatment effect. In order to obtain unbiased estimates of the treatment effect using the this method, several assumptions need to be met. The first is the parallel trends assumption, which requires that the trend in the outcome variable for the treatment and control groups would have been the same in the absence of the treatment. The following graph shows that there are parallel trends between the United States and   Second is the common shocks assumption, which requires that there are no unobserved factors that affect the treatment and control groups differently over time, and that are also related to the outcome variable. Third is that there are no spillover effects. Finally, the last assumption is that there is a sufficiently long post-treatment period. Since these assumptions are met, our estimate is a valid unbiased estimate of the causal effect of the treatment on the outcome variable.
+
+
+```{r, warning = FALSE}
+diffindiff  <- econ_free_clean %>%
+  mutate(country = as.factor(country),
+         year_dum = ifelse(year >= 2008, 1, 0),
+         treated = ifelse(country == "United States", 1, 0),
+         did = year_dum * treated) %>%
+  filter(country == "United States" | country == "Switzerland")
+
+par_trends <- diffindiff %>%
+  ggplot(aes(year, rank, color = country)) + 
+  geom_point(size = 0.5) + 
+  geom_line() + 
+  labs(x = "Year", 
+    y = "Rank",
+    title = "Rank by Year",
+    caption = "Data from 1970-2016")
+
+par_trends
+
+didreg <- lm(rank ~ gov_size + property_rights + sound_money + trade + regulation + treated + year_dum + did, data = diffindiff)
+didreg <- coeftest(didreg, vcov. = vcovHC(didreg, type = 'HC1'))
+stargazer(didreg,
+          type = 'text',
+          no.space = TRUE,
+          column.sep.width = "3pt",
+          font.size = "small",
+          omit.stat=c("ser","f", "adj.rsq"),
+          title = "Table 2: Difference-in-Difference")
 ```
 
-
+Obama's presidency increases rank in the United States by 4.117 on average. The difference-in-difference estimator is significant at the 0.01 significance level. It is economically significant because this is a large increase in rank
 
 ## Regression Discontinuity Estimator
 
