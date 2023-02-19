@@ -97,8 +97,6 @@ econ_free_vars_q2 <- econ_free_clean %>%
 
 \par\noindent\rule{\textwidth}{0.4pt}
 
-
-
 ## SUMMARY 
 
 ```{r}
@@ -140,7 +138,20 @@ stargazer(multivar_reg, fixed_eff_est,
 
 ## Instrumental Variables Estimator
 
+```{r}
+
+```
+
+
+
 ## Difference-in-Difference Estimator
+```{r}
+
+```
+
+
 
 ## Regression Discontinuity Estimator
+
+The local average treatment effect refers to the average effect of a treatment on the population of individuals who are "induced" to receive the treatment due to being close to a pre-specified threshold or cutoff. This is a particular type of treatment effect that only pertains to those individuals who are affected by the threshold, and not to the entire population. In this context, the average effect of polling centers being located in a place with cell phone coverage on fraudulent votes is explored. The most important assumption for the regression discontinuity design is that the treatment is assigned based on a threshold or cutoff value. Here, the cutoff in both panels is 0 meters of distance to boundary and the treatment is being located in an area with cell service. This model also satisfies continuity, exogeneity, local independence, monotonicity and common support. Since all of these conditions are met, unbiased estimates can be obtained using the regression discontinuity design. The regression discontinuity plots in Figure 3 show that there is a clear drop in the levels of fraud for centers located on the coverage side. The likelihood of a polling center reporting fraud drops by about 5 percentage points and the average share of fraudulent votes drops by about 2.5 percentage points. These are economically significant drops when looking at the average values in centers on the noncoverage side.
 
