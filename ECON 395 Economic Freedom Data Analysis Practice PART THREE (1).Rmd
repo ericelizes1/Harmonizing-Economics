@@ -93,13 +93,13 @@ econ_free_vars_q2 <- econ_free_clean %>%
 \textbf{FROM}: Patrick Cavanaugh and Eric Elizes  
 \textbf{TO}: Ms. Gopinath, Chief Economist of the IMF  
 \textbf{SUBJECT}: Results of Economic Freedom analysis  
-\textbf{DATE}: January 28, 2023
+\textbf{DATE}: February 19, 2023
 
 \par\noindent\rule{\textwidth}{0.4pt}
 
 ## SUMMARY 
 
-```{r}
+```{r echo=FALSE}
 multivar_reg <- lm(formula = rank ~ gov_size + property_rights + sound_money + trade + regulation, data = econ_free_clean)
 multivar_reg <- coeftest(multivar_reg, vcov. = vcovHC(multivar_reg, type = 'HC1'))
 
@@ -121,6 +121,16 @@ These results are summarized in the following table:
 \blandscape
 
 ```{r, comment = NA, warning = FALSE, echo=FALSE}
+diffindiff  <- econ_free_clean %>%
+  mutate(country = as.factor(country),
+         year_dum = ifelse(year >= 2008, 1, 0),
+         treated = ifelse(country == "United States", 1, 0),
+         did = year_dum * treated) %>%
+  filter(country == "United States" | country == "Switzerland")
+
+didreg <- lm(rank ~ gov_size + property_rights + sound_money + trade + regulation + treated + year_dum + did, data = diffindiff)
+didreg <- coeftest(didreg, vcov. = vcovHC(didreg, type = 'HC1'))
+
 stargazer(multivar_reg, fixed_eff_est, didreg,
           type = 'text',
           omit = 'country',
@@ -138,7 +148,9 @@ stargazer(multivar_reg, fixed_eff_est, didreg,
 
 ## Instrumental Variables Estimator
 
-```{r}
+The relationship between government size and rank can be analyzed using an instrumental variables estimator.
+
+```{r echo=FALSE}
 
 ```
 
@@ -151,14 +163,7 @@ On November 4, 2008, Americans elected Illinois senator Barack Obama to be the 4
 The difference-in-differences method is an experimental research design that is often used to estimate the causal effect of a treatment or intervention on an outcome variable. The basic idea behind the difference-in-difference method is to compare the change in the outcome variable over time for a treatment group and a control group, and then take the difference between these changes as the estimate of the treatment effect. In order to obtain unbiased estimates of the treatment effect using the this method, several assumptions need to be met. The first is the parallel trends assumption, which requires that the trend in the outcome variable for the treatment and control groups would have been the same in the absence of the treatment. The following graph shows that there are parallel trends between the United States and   Second is the common shocks assumption, which requires that there are no unobserved factors that affect the treatment and control groups differently over time, and that are also related to the outcome variable. Third is that there are no spillover effects. Finally, the last assumption is that there is a sufficiently long post-treatment period. Since these assumptions are met, our estimate is a valid unbiased estimate of the causal effect of the treatment on the outcome variable.
 
 
-```{r, warning = FALSE}
-diffindiff  <- econ_free_clean %>%
-  mutate(country = as.factor(country),
-         year_dum = ifelse(year >= 2008, 1, 0),
-         treated = ifelse(country == "United States", 1, 0),
-         did = year_dum * treated) %>%
-  filter(country == "United States" | country == "Switzerland")
-
+```{r, warning = FALSE, echo=FALSE}
 par_trends <- diffindiff %>%
   ggplot(aes(year, rank, color = country)) + 
   geom_point(size = 0.5) + 
@@ -170,8 +175,6 @@ par_trends <- diffindiff %>%
 
 par_trends
 
-didreg <- lm(rank ~ gov_size + property_rights + sound_money + trade + regulation + treated + year_dum + did, data = diffindiff)
-didreg <- coeftest(didreg, vcov. = vcovHC(didreg, type = 'HC1'))
 stargazer(didreg,
           type = 'text',
           no.space = TRUE,
